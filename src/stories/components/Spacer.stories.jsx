@@ -1,4 +1,4 @@
-import Spacer from '../../components/Spacer'
+import Spacer from '../../components/common/Spacer'
 
 export default {
   title: 'Component/Spacer',

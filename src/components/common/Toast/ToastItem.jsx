@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import styled from '@emotion/styled'
-import Text from '../Text'
-import useTimeout from '../../hooks/useTimeout'
+import { useState } from "react";
+import styled from "@emotion/styled";
+import Text from "../Text";
+import useTimeout from "../../../hooks/useTimeout";
 
 const Container = styled.div`
   position: relative;
@@ -36,7 +36,7 @@ const Container = styled.div`
       margin-top: 0;
     }
   }
-`
+`;
 
 const ProgressBar = styled.div`
   position: absolute;
@@ -57,24 +57,25 @@ const ProgressBar = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 const ToastItem = ({ id, message, duration, onDone }) => {
   // 딱 한번만 쓰는 useState true -> false 되고 언마운트됨?
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(true);
 
   // setTimeout을 통해 DOM이 바로 사라지지 않고, 투명해지도록 유예시간을 줌
   useTimeout(() => {
-    setShow(false)
-    setTimeout(onDone, 400)
-  }, duration)
+    setShow(false);
+    setTimeout(onDone, 400);
+  }, duration);
 
   return (
     <Container style={{ opacity: show ? 1 : 0 }}>
       <ProgressBar style={{ animationDuration: `${duration}ms` }} />
       <Text>{message}</Text>
     </Container>
-  )
-}
+  );
+};
 
-export default ToastItem
+export default ToastItem;
+

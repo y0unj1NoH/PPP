@@ -1,21 +1,21 @@
-import styled from 'styled-components'
+import styled from "@emotion/styled";
 
 const Icon = styled.i`
   display: inline-block;
   vertical-align: middle;
-`
+`;
 
 // loading 로딩을 할것인지 말것인지
 const Spinner = ({
   size = 24,
-  color = '#919EAB',
+  color = "#919EAB",
   loading = true,
   ...props
 }) => {
   const sizeStyle = {
     width: size,
-    height: size,
-  }
+    height: size
+  };
   return loading ? (
     <Icon {...props}>
       <svg
@@ -44,7 +44,8 @@ const Spinner = ({
         </path>
       </svg>
     </Icon>
-  ) : null
-}
+  ) : null;
+};
 
-export default Spinner
+export default Spinner;
+

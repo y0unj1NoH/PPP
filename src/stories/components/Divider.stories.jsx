@@ -1,10 +1,10 @@
-import Divider from '../../components/Divider'
-import Text from '../../components/Text'
+import Divider from "../../components/common/Divider";
+import Text from "../../components/common/Text";
 
 export default {
-  title: 'Component/Divider',
-  component: Divider,
-}
+  title: "Component/Divider",
+  component: Divider
+};
 
 export const Horizontal = () => {
   return (
@@ -13,8 +13,8 @@ export const Horizontal = () => {
       <Divider type="horizontal" />
       <Text>아래</Text>
     </>
-  )
-}
+  );
+};
 
 export const Vertical = () => {
   return (
@@ -25,5 +25,6 @@ export const Vertical = () => {
       <Divider type="vertical" />
       <Text>오른쪽</Text>
     </>
-  )
-}
+  );
+};
+

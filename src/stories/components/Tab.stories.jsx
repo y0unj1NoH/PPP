@@ -1,10 +1,10 @@
-import Tab from '../../components/Tab'
-import Header from '../../components/Header'
+import Tab from "../../components/common/Tab";
+import Header from "../../components/Layout/Header";
 
 export default {
-  title: 'Component/Tab',
-  component: Tab,
-}
+  title: "Component/Tab",
+  component: Tab
+};
 
 export const Default = () => {
   return (
@@ -19,5 +19,6 @@ export const Default = () => {
         <Header>Header</Header>
       </Tab.Item>
     </Tab>
-  )
-}
+  );
+};
+

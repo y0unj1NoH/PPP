@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from 'react'
-import ReactDOM from 'react-dom'
-import styled from '@emotion/styled'
-import useClickAway from '../../hooks/useClickAway'
+import { useEffect, useMemo } from "react";
+import ReactDOM from "react-dom";
+import styled from "@emotion/styled";
+import useClickAway from "../../../hooks/useClickAway";
 
 // 모달 배경 어두워지는 부분
 const BackgroundDim = styled.div`
@@ -12,7 +12,7 @@ const BackgroundDim = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-`
+`;
 
 const ModalContainer = styled.div`
   position: fixed;
@@ -23,7 +23,7 @@ const ModalContainer = styled.div`
   background-color: white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-`
+`;
 
 const Modal = ({
   children,
@@ -35,29 +35,29 @@ const Modal = ({
 }) => {
   // 모달의 바깥 부분을 클릭하면 onClose 함수 실행
   const ref = useClickAway(() => {
-    onClose && onClose()
-  })
+    onClose && onClose();
+  });
 
   const containerStyle = useMemo(
     () => ({
       width,
-      height,
+      height
     }),
-    [width, height],
-  )
+    [width, height]
+  );
 
-  const el = useMemo(() => document.createElement('div'), [])
+  const el = useMemo(() => document.createElement("div"), []);
   useEffect(() => {
     // 바디 안쪽으로 모달을 추가
-    document.body.appendChild(el)
+    document.body.appendChild(el);
     return () => {
-      document.body.removeChild(el)
-    }
-  })
+      document.body.removeChild(el);
+    };
+  });
 
   // 모달을 불러온 컴포넌트 안에 있는 게 아니라 body=가장 바깥쪽으로 빼서 추가
   return ReactDOM.createPortal(
-    <BackgroundDim style={{ display: visible ? 'block' : 'none' }}>
+    <BackgroundDim style={{ display: visible ? "block" : "none" }}>
       <ModalContainer
         ref={ref}
         {...props}
@@ -66,8 +66,9 @@ const Modal = ({
         {children}
       </ModalContainer>
     </BackgroundDim>,
-    el,
-  )
-}
+    el
+  );
+};
 
-export default Modal
+export default Modal;
+
