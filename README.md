@@ -30,3 +30,10 @@ npm i feather-icons
   Regular: 400
   Thin: 100
 
+  https://velog.io/@yoonyounghoon/%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%ED%8F%B0%ED%8A%B8-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0
+
+  커밋 메시지 항상 고민되는데, 대충 외우자
+  https://jane-aeiou.tistory.com/93#google_vignette
+
+스토리북 익스텐션 한번 찾아보고 적용하자 왔다갔다 귀찮음
+
