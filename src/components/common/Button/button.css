@@ -1,30 +1,57 @@
 .button {
-  display: inline-block;
+  /* display: inline-block; */
   cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
+  border: none;
+  border-radius: 8px;
   line-height: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.button--icon {
+  padding: 8px;
+}
+
 .button--primary {
-  background-color: #1ea7fd;
+  background-color: #907ad6;
   color: white;
 }
 .button--secondary {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  background-color: transparent;
-  color: #333;
+  background-color: white;
+  color: #181a2a;
 }
+
+/* plus icon용 */
 .button--small {
-  padding: 10px 16px;
+  padding: 4px;
   font-size: 12px;
 }
+/* 기본 텍스트용 */
 .button--medium {
-  padding: 11px 20px;
+  padding: 8px;
   font-size: 14px;
 }
 .button--large {
-  padding: 12px 24px;
+  padding: 16px;
   font-size: 16px;
 }
+
+#button--plus {
+  /* width: 96px;
+  height: 80px; */
+  padding: 20px 28px 20px 28px;
+  border-radius: 21px;
+}
+
+#button--check {
+  /* width: 64px;
+  height: 56px; */
+  padding: 16px;
+  border-radius: 16px;
+}
+
+/* 기본 텍스트 14px
+아이콘 16px */
 
