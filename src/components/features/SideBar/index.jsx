@@ -16,7 +16,6 @@ const SideBarContainer = styled.div`
   padding: 32px 16px;
 
   background-color: #f9fbfc;
-  border: 2px solid red;
   box-sizing: border-box;
 `;
 
@@ -26,7 +25,7 @@ const Link = styled(LinkDOM)`
   // border: 1px solid blue;
 `;
 
-const SideBar = () => {
+const SideBar = ({ headerType = "desktop" }) => {
   const pathName = useLocation().pathname;
 
   const menus = [
@@ -41,7 +40,7 @@ const SideBar = () => {
 
   return (
     <SideBarContainer>
-      <Header />
+      <Header type={headerType} />
       <div style={{ flex: 1, width: "100%" }}>
         {menus.map((menu, index) => {
           return (

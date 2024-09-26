@@ -14,3 +14,11 @@ export const Default = () => {
   );
 };
 
+export const Mobile = () => {
+  return (
+    <Router>
+      <SideBar headerType="mobile" />
+    </Router>
+  );
+};
+
