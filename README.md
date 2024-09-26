@@ -116,3 +116,13 @@ npm i feather-icons
   - viewmode로 아이콘의 비율을 정하고, width, height로 사이즈를 동적 설정하게 구현
   - 다른 아이콘들은 괜찮은데, RoundCheck 아이콘이 storybook에서 사이즈 반영이 안되는데, 버튼에서 테스트 해보니 이건 된다. 뭐가 문제일까..?
 
+  [Error] Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+
+  - 자꾸 기본 Default 속성 안넣어서 에러뜬다. 유의하자.
+
+  8. Footer 컴포넌트 추가 및 사이드바에 반영
+
+  - Footer에 `width: 100%` 하니까 오버플로우 됐는데 보니까 부모값이 fix라서 그런 것이었다.
+    calc로 패딩값을 빼줘서 해결
+    `width: calc(100% - 32px);`
+

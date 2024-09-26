@@ -1,7 +1,9 @@
 import { Link as LinkDOM, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
-import Header from "../../Layout/Header";
 import SideBarItem from "./SideBarItem";
+import Header from "../../Layout/Header";
+import Divider from "../../common/Divider";
+import Footer from "../../Layout/Footer";
 
 const SideBarContainer = styled.div`
   display: flex;
@@ -40,19 +42,23 @@ const SideBar = () => {
   return (
     <SideBarContainer>
       <Header />
-      {menus.map((menu, index) => {
-        return (
-          <Link to={menu.path} key={index}>
-            <SideBarItem
-              key={index}
-              name={menu.name}
-              active={pathName === menu.path}
-              index={index}
-              onClick={() => onClick(menu.path)}
-            />
-          </Link>
-        );
-      })}
+      <div style={{ flex: 1, width: "100%" }}>
+        {menus.map((menu, index) => {
+          return (
+            <Link to={menu.path} key={index}>
+              <SideBarItem
+                key={index}
+                name={menu.name}
+                active={pathName === menu.path}
+                index={index}
+                onClick={() => onClick(menu.path)}
+              />
+            </Link>
+          );
+        })}
+      </div>
+      <Divider type="horizontal" />
+      <Footer />
     </SideBarContainer>
   );
 };

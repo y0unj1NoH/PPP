@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 
 const Line = styled.hr`
   border: none;
@@ -20,23 +20,24 @@ const Line = styled.hr`
     width: 100%;
     height: 1px;
   }
-`
+`;
 
 const Divider = ({
-  type = 'horizontal', // horizontal, vertical
+  type = "horizontal", // horizontal, vertical
   size = 8,
   ...props
 }) => {
   const dividerStyle = {
-    margin: type === 'vertical' ? `0 ${size}px` : `${size}px 0`,
-  }
+    margin: type === "vertical" ? `0 ${size}px` : `${size}px 0`
+  };
   return (
     <Line
       {...props}
       className={type}
       style={{ ...dividerStyle, ...props.style }}
     />
-  )
-}
+  );
+};
 
-export default Divider
+export default Divider;
+

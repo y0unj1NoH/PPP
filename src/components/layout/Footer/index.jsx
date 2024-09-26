@@ -5,17 +5,20 @@ import Text from "../../common/Text";
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 48px;
 
-  width: 100%;
-  padding: 16px 0;
+  // width: 100% 하니까 오버플로우 됐는데 보니까 부모값이 fix라서 그런 것이었다.
+  width: calc(100% - 32px);
+  padding: 0 16px;
 `;
 
 const IconContainer = styled.div`
   display: flex;
   gap: 16px;
 `;
+
 const Footer = () => {
   return (
     <FooterContainer>
@@ -23,7 +26,9 @@ const Footer = () => {
         <Icon.Github />
         <Icon.Default name="mail" size={60} color="#2C2A4A" />
       </IconContainer>
-      <Text color="#2C2A4A">copyrightⓒ 2024 All rights reserved</Text>
+      <Text size="small" color="#2C2A4A">
+        copyrightⓒ 2024 All rights reserved
+      </Text>
     </FooterContainer>
   );
 };
