@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import useCheckBox from "../../../hooks/useCheckBox";
+import Icon from "../Icon";
 import Text from "../Text";
 
 const CheckBoxContainer = styled.label`
@@ -20,24 +21,6 @@ const Check = styled.div`
   border: 2px solid #31d555;
   background: rgba(255, 255, 255, 0.8);
 `;
-
-const CheckIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="13"
-    height="9"
-    viewBox="0 0 13 9"
-    fill="none"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M5 6L11 0L12.5 1.5L6.5 7.5L5 6ZM3.5 7.5L5 6L2 3L0.5 4.5L3.5 7.5Z"
-      fill="white"
-    />
-    <path d="M3.5 7.5L5 9L6.5 7.5L5 6L3.5 7.5Z" fill="white" />
-  </svg>
-);
 
 const CheckBoxInput = styled.input`
   display: none;
@@ -63,7 +46,7 @@ const CheckBox = ({ name, on = false, onChange, ...props }) => {
         checked={checked}
         onChange={handleChange}
       />
-      <Check>{checked ? <CheckIcon /> : null}</Check>
+      <Check>{checked ? <Icon.Check /> : null}</Check>
       <Text>{name}</Text>
     </CheckBoxContainer>
   );

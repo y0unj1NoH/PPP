@@ -1,12 +1,19 @@
 import { icons } from "feather-icons";
 import { Buffer } from "buffer";
 import styled from "@emotion/styled";
+import Telescope from "./Telescope";
+import CheckList from "./CheckList";
+import RoundCheck from "./RoundCheck";
+import Plus from "./Plus";
+import Check from "./Check";
+import Warning from "./Warning";
 
 const IconWrapper = styled.i`
-  display: inline-block;
+  display: inline-flex;
+  align-items: "center";
 `;
 
-const Icon = ({
+const Default = ({
   name,
   size = 16,
   strokeWidth = 2,
@@ -19,6 +26,7 @@ const Icon = ({
     height: size,
     transform: rotate ? `rotate(${rotate}deg)` : undefined
   };
+
   const iconStyle = {
     "stroke-width": strokeWidth,
     stroke: color,
@@ -35,6 +43,16 @@ const Icon = ({
       <img src={`data:image/svg+xml;base64,${base64}`} alt={name} />
     </IconWrapper>
   );
+};
+
+const Icon = {
+  Default,
+  CheckList,
+  Telescope,
+  Plus,
+  RoundCheck,
+  Check,
+  Warning
 };
 
 export default Icon;
