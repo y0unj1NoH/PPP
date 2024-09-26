@@ -19,6 +19,8 @@ const Container = styled.div`
   border: none;
   background: rgba(218, 218, 218, 0.5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+
   opacity: 1;
   transition: opacity 0.4s ease-out;
 

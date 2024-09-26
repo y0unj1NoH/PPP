@@ -14,6 +14,6 @@ export const Default = (args) => {
 };
 
 export const Complete = () => {
-  return <CheckBox name="완료된 내역 포함" />;
+  return <CheckBox name="완료된 내역 포함" on={true} />;
 };
 

@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 const IconWrapper = styled.i`
   display: inline-block;
 `;
+
 const Icon = ({
   name,
   size = 16,

@@ -1,16 +1,34 @@
+import { BrowserRouter as Router } from "react-router-dom";
 import Header from "../../components/Layout/Header";
 
 export default {
   title: "Component/Header",
   component: Header,
   argTypes: {
-    level: { control: { type: "range", min: 1, max: 6 } },
-    strong: { control: "boolean" },
-    underline: { control: "boolean" },
-    color: { control: "color" }
+    type: { control: "text" }
   }
 };
-export const Default = (args) => {
-  return <Header {...args}>Header</Header>;
+export const Desktop = (args) => {
+  return (
+    <Router>
+      <Header type="desktop" {...args} />
+    </Router>
+  );
+};
+
+export const Mobile = (args) => {
+  return (
+    <Router>
+      <Header type="mobile" {...args} />
+    </Router>
+  );
+};
+
+export const MobileTop = (args) => {
+  return (
+    <Router>
+      <Header type="mobileTop" {...args} />
+    </Router>
+  );
 };
 
