@@ -116,5 +116,3 @@ npm i feather-icons
   - viewmode로 아이콘의 비율을 정하고, width, height로 사이즈를 동적 설정하게 구현
   - 다른 아이콘들은 괜찮은데, RoundCheck 아이콘이 storybook에서 사이즈 반영이 안되는데, 버튼에서 테스트 해보니 이건 된다. 뭐가 문제일까..?
 
-  8. 그리고 현재 코드들에 Text 컴포넌트를 안끼워넣었는데 수정해야겠다.
-

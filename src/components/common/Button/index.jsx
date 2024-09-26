@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Text from "../Text";
 import "./button.css";
 
 const Button = ({ label, primary = false, size = "medium", ...props }) => {
@@ -9,7 +10,7 @@ const Button = ({ label, primary = false, size = "medium", ...props }) => {
       className={["button", `button--${size}`, mode].join(" ")}
       {...props}
     >
-      {label}
+      <Text>{label}</Text>
     </button>
   );
 };

@@ -6,7 +6,7 @@ import PPP from "../../../assets/logo.svg";
 // TODO: img 말고 컴포넌트로 만들기
 // import PPP from "../../../assets/logo.svg?react";
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,8 +30,16 @@ const Link = styled(LinkDOM)`
 // TODO: 데스크탑 헤더부터 만들자
 // TODO: 모바일 헤더 만들자
 
-const HamburgerButton = ({ onClick }) => {
-  return <Icon name="menu" size={42} color="#8F8F8F" onClick={onClick} />;
+const HamburgerButton = ({ onClick, ...props }) => {
+  return (
+    <Icon.Default
+      name="menu"
+      size={42}
+      color="#8F8F8F"
+      onClick={onClick}
+      style={{ ...props.style }}
+    />
+  );
 };
 
 const Header = ({ type = "desktop", onClick, ...props }) => {

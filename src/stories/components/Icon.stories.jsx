@@ -43,3 +43,6 @@ export const Warning = () => {
   return <Icon.Warning />;
 };
 
+export const Github = () => {
+  return <Icon.Github />;
+};

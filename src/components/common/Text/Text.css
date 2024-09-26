@@ -1,12 +1,12 @@
-.Text--size--small {
+.Text--small {
   font-size: 12px;
 }
 
-.Text--size--normal {
+.Text--normal {
   font-size: 14px;
 }
 
-.Text--size--large {
+.Text--large {
   font-size: 18px;
 }
 
