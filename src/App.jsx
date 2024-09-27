@@ -1,10 +1,12 @@
 import "./App.css";
 import "./myreset.css";
+
+import { useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/features/SideBar";
-import Calendar from "./pages/Calendar";
-import TodoList from "./pages/TodoList";
-import News from "./pages/News";
+import CalendarPage from "./pages/CalendarPage";
+import TodoListPage from "./pages/TodoListPage";
+import NewsPage from "./pages/NewsPage";
 
 export default function App() {
   return (
@@ -12,11 +14,12 @@ export default function App() {
       <Router>
         <Sidebar></Sidebar>
         <Routes>
-          <Route path="/" exact component={Calendar} />
-          <Route path="/todoList" component={TodoList} />
-          <Route path="/news" component={News} />
+          <Route path="/" element={<CalendarPage />} />
+          <Route path="/todoList" element={<TodoListPage />} />
+          <Route path="/news" element={<NewsPage />} />
         </Routes>
       </Router>
+      {/* <Calendar calendarEvents={eventsData} /> */}
     </div>
   );
 }

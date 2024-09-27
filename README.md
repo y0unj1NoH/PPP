@@ -8,6 +8,8 @@ npx storybook@latest init
 
 npm i feather-icons
 
+npm i @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/react @fullcalendar/timegrid @fullcalendar/core
+
 ### PPP
 
 0. 커밋 메시지 항상 고민되는데, 대충 외우자
@@ -125,4 +127,14 @@ npm i feather-icons
   - Footer에 `width: 100%` 하니까 오버플로우 됐는데 보니까 부모값이 fix라서 그런 것이었다.
     calc로 패딩값을 빼줘서 해결
     `width: calc(100% - 32px);`
+
+9. 컴포넌트 작업 잠깐 쉬고, fullcalendar 찍먹하기
+
+- 공식 문서가 불친절해서 좀 골치아팠는데, 예시 깃허브가 아주 괜찮다
+  https://github.com/fullcalendar/fullcalendar-examples/tree/main/react
+- 캘린더는 정보가 많아서 따로 md에 저장하기로 했다.
+- 라우트를 했는데 화면 전환이 안돼서 보니까 v6 버전이 아니라 그랬다... 라우트 포스팅 볼때는 버전에 유의하자. 그냥 내가 공부한 거 까먹어서 뭐가 틀린지도 몰랐던 것임...
+- 일단 대충 기본 예제 코드는 보았고, 전체적인 스타일링부터 해보려 한다.
+
+10. 컬러 스타일 따로 정리하기
 

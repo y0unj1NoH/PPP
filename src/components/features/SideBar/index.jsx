@@ -17,6 +17,9 @@ const SideBarContainer = styled.div`
 
   background-color: #f9fbfc;
   box-sizing: border-box;
+
+  line-height: 1.5;
+  border-right: 1px solid #d3e2e8;
 `;
 
 const Link = styled(LinkDOM)`
