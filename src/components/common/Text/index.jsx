@@ -1,4 +1,8 @@
-import "./Text.css";
+const textSize = {
+  small: 12,
+  normal: 14,
+  large: 18
+};
 
 const Text = ({
   children,
@@ -13,16 +17,12 @@ const Text = ({
 
   const fontStyle = {
     fontWeight: strong ? "bold" : undefined,
-    fontSize: typeof size === "number" ? size : undefined,
+    fontSize: typeof size === "number" ? size : textSize[size],
     color: color
   };
 
   return (
-    <Tag
-      className={typeof size === "string" ? `Text--${size}` : undefined}
-      style={{ ...props.style, ...fontStyle }}
-      {...props}
-    >
+    <Tag style={{ ...props.style, ...fontStyle }} {...props}>
       {children}
     </Tag>
   );

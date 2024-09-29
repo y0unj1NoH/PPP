@@ -32,13 +32,17 @@ const Calendar = () => {
   // 이벤트 클릭 함수
   // 지금은 지우는 걸로 되어 있음
   function handleEventClick(clickInfo) {
-    if (
-      confirm(
-        `Are you sure you want to delete the event '${clickInfo.event.start}'`
-      )
-    ) {
-      clickInfo.event.remove();
-    }
+    console.log("클릭 인포:", clickInfo);
+
+    const startDate = clickInfo.event.start;
+    // alert()
+    // if (
+    //   confirm(
+    //     `Are you sure you want to delete the event '${clickInfo.event.start}'`
+    //   )
+    // ) {
+    //   clickInfo.event.remove();
+    // }
     // TODO: info 객체 속성 정리하기
     // 1. event.title, event.start, event.end
     // 2.
@@ -75,10 +79,8 @@ const Calendar = () => {
         selectable={true} // 달력 드래그해서 날짜 및 시간 선택 가능
         selectMirror={true}
         dayMaxEvents={true}
-        timeZone="Asia/Seoul"
         events={INITIAL_EVENTS} // 캘린더에 표시할 이벤트 데이터
         select={handleDateSelect} // 날짜 선택했을 때 실행되는 함수(우리는 추가 모달 뜨게 해야함)
-        eventContent={renderEventContent} // 이벤트 컨텐츠 설정 함수
         eventClick={handleEventClick} // 이벤트 클릭 시 함수
         eventsSet={handleEvents} // called after events are initialized/added/changed/removed
         /* you can update a remote database when these fire:
@@ -86,23 +88,17 @@ const Calendar = () => {
               eventChange={function(){}}
               eventRemove={function(){}}
               */
+        eventTimeFormat={{
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false
+        }}
+        dayMaxEventRows={3} // 최대 이벤트 표시 수
       />
     </>
   );
 };
 export default Calendar;
-
-// TODO: 이벤트 컨텐츠 스타일 변경하기
-function renderEventContent(eventInfo) {
-  return (
-    <div className="fc-event-main">
-      <div className="fc-event-bg-color">
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-      </div>
-    </div>
-  );
-}
 
 // TODO: 커스텀 뷰 나중에 다시 보고 테스트 해보기
 

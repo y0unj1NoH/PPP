@@ -1,31 +1,60 @@
-import PropTypes from "prop-types";
+import styled from "@emotion/styled";
 import Text from "../Text";
-import "./button.css";
 
-const Button = ({ label, primary = false, size = "medium", ...props }) => {
-  const mode = primary ? "button--primary" : "button--secondary";
+const buttonSize = {
+  small: { padding: 4, fontSize: 12 },
+  medium: { padding: 8, fontSize: 14 },
+  large: { padding: 16, fontSize: 16 }
+};
+
+// TODO: 더 좋은 변수 이름 찾기
+const $Button = styled.button`
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &#button--plus {
+    padding: 20px 28px;
+    border-radius: 20px;
+  }
+
+  &#button--check {
+    padding: 16px;
+    border-radius: 16px;
+  }
+`;
+
+const Button = ({
+  label,
+  primary = false,
+  size = "medium",
+  onClick,
+  ...props
+}) => {
+  const buttonStyle = {
+    fontSize: buttonSize[size].fontSize,
+    padding: buttonSize[size].padding,
+    backgroundColor: primary ? "#907ad6" : "white",
+    color: primary ? "white" : "#181a2a",
+    boxShadow: primary ? "none" : "rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset"
+  };
+
   return (
-    <button
+    <$Button
       type="button"
-      className={["button", `button--${size}`, mode].join(" ")}
+      primary={primary}
+      size={size}
+      onClick={onClick}
+      style={{ ...buttonStyle, ...props.style }}
       {...props}
     >
       <Text>{label}</Text>
-    </button>
+    </$Button>
   );
-};
-
-Button.propTypes = {
-  primary: PropTypes.bool,
-  size: PropTypes.oneOf(["small", "medium", "large"]),
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.func
-};
-
-Button.defaultProps = {
-  primary: false,
-  size: "medium",
-  onClick: undefined
 };
 
 export default Button;

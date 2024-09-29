@@ -1,4 +1,4 @@
-/* 각 클래스의 색상을 바꾸는 방법도 있지만 지정된 변수들을 재할당하여 색상 및 크기를 조절 하는 방법을 사용했습니다.  */
+/* TODO: 헤더 툴바 타이틀 스타일 변경 */
 :root {
   --fc-small-font-size: 0.85em;
 
@@ -110,6 +110,34 @@
   border-radius: 20px;
 }
 
+.fc-day {
+  border: 3px solid red;
+}
+
+.fc-day .fc-daygrid-day-frame {
+  padding: 8px;
+
+  & .fc-daygrid-day-top {
+    padding-bottom: 2px;
+
+    & .fc-daygrid-day-number {
+      margin: 0 auto;
+      font-size: 10px;
+      color: #252525;
+    }
+  }
+
+  & .fc-daygrid-day-events .fc-daygrid-event-harness {
+    padding-top: 2px;
+  }
+}
+
+.fc-daygrid-event .fc-event-title,
+.fc-direction-ltr .fc-daygrid-event .fc-event-time {
+  font-size: 10px;
+  font-weight: 500;
+}
+
 .fc-day.fc-day-sat .fc-daygrid-day-top {
   color: blue;
 }
@@ -118,13 +146,14 @@
   color: red;
 }
 
-/* .fc-header-toolbar .fc-toolbar-chunk .fc-button-group .fc-timeGridWeek-button {
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  color: #000;
-  border-radius: 8px;
-} */
+/* TODO: 텍스트가 동그라미 한가운데 있는 것 같지 않은건 기분탓인가 */
+.fc-day.fc-day-today .fc-daygrid-day-top > .fc-daygrid-day-number {
+  background-color: #907ad6;
+  border-radius: 50%;
+  color: #fff;
+}
 
+/* 헤더 툴바 */
 .fc-header-toolbar .fc-toolbar-chunk:nth-of-type(1) > button {
   border-radius: 8px;
 
@@ -164,7 +193,15 @@
   }
 }
 
-button {
-  
+/* TODO: 테이블 높이, 보더 정리하기 */
+.fc .fc-col-header-cell {
+  /* border: 1px solid red; */
+}
+
+.fc-col-header-cell-cushion {
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+  color: #252525;
 }
 

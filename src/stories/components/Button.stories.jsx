@@ -1,4 +1,3 @@
-import { fn } from "@storybook/test";
 import Button from "../../components/common/Button";
 import Icon from "../../components/common/Icon";
 
@@ -9,8 +8,7 @@ export default {
   // tags: ["autodocs"],
   argTypes: {
     backgroundColor: { control: "color" }
-  },
-  args: { onClick: fn() }
+  }
 };
 
 export const Primary = () => {
