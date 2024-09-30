@@ -1,15 +1,15 @@
 import { useState } from "react";
 import Modal from "../../components/common/Modal";
-import InfoModal from "../../components/features/Calendar/InfoModal";
+import AddModal from "../../components/features/Calendar/AddModal";
 
 export default {
-  title: "Features/InfoModal",
-  component: InfoModal
+  title: "Features/AddModal",
+  component: AddModal
 };
 
 export const Default = () => {
   const [visible, setVisible] = useState(false);
-  const [modalType, setModalType] = useState({ type: "info", width: 300 });
+  const [modalType, setModalType] = useState({ type: "add", width: 500 });
 
   const event = {
     title: "점심시간",
@@ -25,11 +25,7 @@ export const Default = () => {
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        <InfoModal
-          event={event}
-          setVisible={setVisible}
-          setModalType={setModalType}
-        />
+        <AddModal event={event} setVisible={setVisible} />
       </Modal>
     </div>
   );

@@ -21,7 +21,7 @@ const InfoHeader = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  // gap: 4px;
+  gap: 4px;
 `;
 
 const InfoModal = ({ setVisible, event, setModalType }) => {
@@ -30,6 +30,7 @@ const InfoModal = ({ setVisible, event, setModalType }) => {
     backgroundColor: "transparent"
   };
 
+  // TODO: 함수 최적화
   const title = event.title;
   const date = dateToStr(event);
 

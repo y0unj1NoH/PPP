@@ -21,6 +21,7 @@ const ButtonContainer = styled.div`
 `;
 
 const ConfirmModal = ({ setVisible, event, setModalType }) => {
+  // TODO: 함수 최적화
   const onDelete = () => {
     event && event.remove();
     setVisible(false);

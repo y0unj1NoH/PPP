@@ -2,7 +2,8 @@
 
 ## 진행 상황
 
-- 사이드바 컴포넌트 구현 후, 캘린터 라이브러리를 가져와 스타일 지정하고 있습니다. (캘린더 기능 구현 아직 X)
+- 캘린더 일정 상세, 삭제 모달 컴포넌트 및 기능 구현 완료
+- 캘린더 일정 추가, 수정 모달 구현 필요
 
 ---
 
@@ -83,6 +84,8 @@ npm i @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/react @fullc
   그래서 구글링을 통해 아래와 같은 방식을 사용하였다.
   https://gaemi606.tistory.com/entry/React-react-router-dom%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-sidebar (리액트가 옛날버전이라 최신 코드로 수정이 필요했다.)
 
+  - vite 개발 모드에서 라우트를 했는데 화면 전환이 안돼서 보니까 v6 버전이 아니라 그랬다... 라우트 포스팅 볼때는 버전에 유의하자. 그냥 내가 공부한 거 까먹어서 뭐가 틀린지도 몰랐던 것임...
+
   [Error] useNavigate() may be used only in the context of a <Router> component.
   storybook에서 Router를 사용하려면 React-Router 연결이 따로 필요했다.
   구글링을 통해 아래와 같은 방식으로 해결하였다.
@@ -142,13 +145,16 @@ npm i @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/react @fullc
 
 - 공식 문서가 불친절해서 좀 골치 아팠는데, 예시 깃허브가 아주 괜찮다
   https://github.com/fullcalendar/fullcalendar-examples/tree/main/react
-- 캘린더는 정보가 많아서 따로 md에 저장하기로 했다.
-- 라우트를 했는데 화면 전환이 안돼서 보니까 v6 버전이 아니라 그랬다... 라우트 포스팅 볼때는 버전에 유의하자. 그냥 내가 공부한 거 까먹어서 뭐가 틀린지도 몰랐던 것임...
-- 일단 대충 기본 예제 코드는 보았고, 전체적인 스타일링부터 해보려 한다.
-- 캘린터 헤더 툴바 스타일 지정()
+- 캘린더는 정보가 많아서 따로 calendar.md에 저장하기로 했다.
 
-10.
+10. 많은 일을 뒤로 하고
 
 TODO: 컬러 스타일 따로 정리하기
 TODO: spacer 적용하기
+TODO: 모달 컴포넌트 리팩토링 및 최적화
+TODO: 일정 추가, 수정 모달 컨텐츠 컴포넌트 구현(작은 달력: 풀캘린더로 기능 거의다 지우고 간단한 작은 달력 만들기)
+
+11. 새로운 뉴스 파기...^^
+
+TODO: 이렇게 하나하나 기록하는 것 말고, 계획표를 짜놔야겠다.
 
