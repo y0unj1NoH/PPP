@@ -7,12 +7,19 @@ import timeGridPlugin from "@fullcalendar/timegrid"; // 주간 달력, 일간 �
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 import "./Calendar.css";
+import InfoModal from "./InfoModal";
+import ConfirmModal from "./ConfirmModal";
+import Modal from "../../common/Modal";
 
 const Calendar = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [event, setEvent] = useState({});
+  const [modalType, setModalType] = useState({ type: "info", width: 300 });
 
   // 데이터 추가 함수
   function handleDateSelect(selectInfo) {
+    // TODO: 일정 추가 모달창 열기
     let title = prompt("Please enter a new title for your event");
     let calendarApi = selectInfo.view.calendar;
 
@@ -29,23 +36,12 @@ const Calendar = () => {
     }
   }
 
-  // 이벤트 클릭 함수
-  // 지금은 지우는 걸로 되어 있음
   function handleEventClick(clickInfo) {
-    console.log("클릭 인포:", clickInfo);
-
-    const startDate = clickInfo.event.start;
-    // alert()
-    // if (
-    //   confirm(
-    //     `Are you sure you want to delete the event '${clickInfo.event.start}'`
-    //   )
-    // ) {
-    //   clickInfo.event.remove();
-    // }
-    // TODO: info 객체 속성 정리하기
-    // 1. event.title, event.start, event.end
-    // 2.
+    // 새로운 이벤트 모달이 열리면 기존 모달 info 초기화
+    const event = clickInfo.event;
+    setEvent(event);
+    setModalType({ type: "info", width: 300 });
+    setVisible(true);
   }
 
   // 이건 뭐지
@@ -54,13 +50,16 @@ const Calendar = () => {
     setCurrentEvents(events);
   }
 
-  const handleViewDidMount = (arg) => {
-    const toolbarTitle = arg.el.querySelector(".fc-toolbar-title");
-    if (toolbarTitle) {
-      const [month, year] = toolbarTitle.textContent.split(" ");
-      toolbarTitle.innerHTML = `<span class="fc-toolbar-title-month">${month}</span> <span class="fc-toolbar-title-year">${year}</span>`;
-    }
-  };
+  // // 이건
+  // const handleViewDidMount = (arg) => {
+  //   console.log("handleViewDidMount called", arg);
+  //   const toolbarTitle = document.querySelector(".fc-toolbar-title");
+  //   if (toolbarTitle) {
+  //     const [month, year] = toolbarTitle.textContent.split(" ");
+  //     toolbarTitle.innerHTML = `<div><span class="fc-toolbar-title-month">${month}</span> <span class="fc-toolbar-title-year">${year}</span></div>`;
+  //   }
+  // };
+
   return (
     <>
       {/* <Sidebar currentEvents={currentEvents} /> */}
@@ -73,7 +72,7 @@ const Calendar = () => {
           center: "prev title next",
           right: "dayGridMonth timeGridWeek"
         }}
-        viewDidMount={handleViewDidMount}
+        // viewDidMount={handleViewDidMount}
         initialView="dayGridMonth" // 월간 달력으로 디폴트 화면
         editable={true} // 이벤트를 드래그 앤 드롭으로 편집 가능
         selectable={true} // 달력 드래그해서 날짜 및 시간 선택 가능
@@ -95,6 +94,25 @@ const Calendar = () => {
         }}
         dayMaxEventRows={3} // 최대 이벤트 표시 수
       />
+      <Modal
+        width={modalType.width}
+        visible={visible}
+        onClose={() => setVisible(false)}
+      >
+        {modalType.type === "info" && visible ? (
+          <InfoModal
+            event={event}
+            setVisible={setVisible}
+            setModalType={setModalType}
+          />
+        ) : modalType.type === "confirm" && visible ? (
+          <ConfirmModal
+            event={event}
+            setVisible={setVisible}
+            setModalType={setModalType}
+          />
+        ) : null}
+      </Modal>
     </>
   );
 };

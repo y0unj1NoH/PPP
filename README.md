@@ -147,5 +147,8 @@ npm i @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/react @fullc
 - 일단 대충 기본 예제 코드는 보았고, 전체적인 스타일링부터 해보려 한다.
 - 캘린터 헤더 툴바 스타일 지정()
 
-10. 컬러 스타일 따로 정리하기
+10.
+
+TODO: 컬러 스타일 따로 정리하기
+TODO: spacer 적용하기
 

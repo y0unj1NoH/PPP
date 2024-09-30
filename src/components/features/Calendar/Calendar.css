@@ -164,9 +164,7 @@
 
 .fc-header-toolbar .fc-toolbar-chunk:nth-of-type(2) {
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
 
   & > button {
     border: none;

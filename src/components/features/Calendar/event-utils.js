@@ -13,7 +13,7 @@ export const INITIAL_EVENTS = [
     // TODO: start만 하면 배경색이 없음
     id: createEventId(),
     title: "Timed event",
-    start: todayStr + "T12:30:00"
+    start: todayStr + "T14:30:00"
   },
   {
     id: createEventId(),
