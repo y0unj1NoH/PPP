@@ -6,7 +6,7 @@ export default {
 };
 
 export const Saramin = () => {
-  const job = {
+  const data = {
     url: "http://www.saramin.co.kr/zf_user/jobs/relay/view?rec_idx=27614114&utm_source=job-search-api&utm_medium=api&utm_campaign=saramin-job-search-api",
     company: {
       name: "(주)사람인"
@@ -25,7 +25,7 @@ export const Saramin = () => {
     },
     "expiration-date": "2019-06-29T23:59:59+0900"
   };
-  return <Card.SaraminCard job={job} />;
+  return <Card.SaraminCard data={data} />;
 };
 
 export const Blog = () => {

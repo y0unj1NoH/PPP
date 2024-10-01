@@ -48,6 +48,7 @@ const AuthorContainer = styled.div`
   gap: 9px;
 `;
 
+// TODO: date 처리 함수들 정리 필요
 const dateToStr = (published_date) => {
   const dateObj = new Date(published_date);
 
@@ -58,18 +59,28 @@ const dateToStr = (published_date) => {
   return date;
 };
 
-const BlogCard = ({ data }) => {
-  const { url, cover_image, tag_list, title, user, published_timestamp } = data;
-
-  const image = cover_image.replace(
+const parseBlogData = (data) => {
+  const image = data.cover_image.replace(
     "width=1000,height=420",
     "width=300,height=180"
   );
+  const date = dateToStr(data.published_timestamp);
 
-  const userProfile = user.profile_image_90;
-  const userName = user.name;
+  return {
+    url: data.url,
+    image,
+    tags: data.tag_list,
+    title: data.title,
+    user: {
+      profile: data.user.profile_image_90,
+      name: data.user.name
+    },
+    date
+  };
+};
 
-  const date = dateToStr(published_timestamp);
+const BlogCard = ({ data }) => {
+  const { url, image, tags, title, user, date } = parseBlogData(data);
 
   const imageStyle = {
     width: "100%",
@@ -95,7 +106,7 @@ const BlogCard = ({ data }) => {
       <ContentContainer>
         <TitleContainer>
           <TagContainer>
-            {tag_list.map((tag, index) => (
+            {tags.map((tag, index) => (
               <Tag key={index} tag={tag} />
             ))}
           </TagContainer>
@@ -107,15 +118,15 @@ const BlogCard = ({ data }) => {
           <AuthorContainer>
             <Image
               lazy
-              src={userProfile}
+              src={user.profile}
               width={27}
               height={27}
-              alt={userName}
+              alt={user.name}
               mode="cover"
               style={{ ...profileStyle }}
             />
             <Text size="small" color="#97989F">
-              {userName}
+              {user.name}
             </Text>
           </AuthorContainer>
           <Text size="small" color="#97989F">

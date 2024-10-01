@@ -38,11 +38,20 @@ const TextContainer = styled.div`
   text-align: center;
 `;
 
-const GithubCard = ({ data }) => {
-  const { html_url: url, name: title, description, owner } = data;
+const parseGithubData = (data) => {
+  return {
+    url: data.html_url,
+    title: data.name,
+    description: data.description,
+    owner: {
+      profile: data.owner.avatar_url,
+      name: data.owner.login
+    }
+  };
+};
 
-  const ownerProfile = owner.avatar_url;
-  const ownerName = owner.login;
+const GithubCard = ({ data }) => {
+  const { url, title, description, owner } = parseGithubData(data);
 
   const githubImageStyle = {
     position: "absolute",
@@ -72,6 +81,7 @@ const GithubCard = ({ data }) => {
     WebkitLineClamp: 2,
     WebkitBoxOrient: "vertical"
   };
+
   return (
     <CardContainer onClick={() => window.open(url)}>
       <ImageBackground>
@@ -80,10 +90,10 @@ const GithubCard = ({ data }) => {
         </div>
         <Image
           lazy
-          src={ownerProfile}
+          src={owner.profile}
           width={34}
           height={34}
-          alt={ownerName}
+          alt={owner.name}
           mode="cover"
           style={{ ...profileStyle }}
         />

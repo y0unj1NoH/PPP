@@ -36,6 +36,7 @@ const DaysOfWeek = Object.freeze({
   6: "토"
 });
 
+// TODO: date 처리 함수들 정리 필요
 const dateToDeadline = (dateStr) => {
   const dateObj = new Date(dateStr);
 
@@ -48,23 +49,39 @@ const dateToDeadline = (dateStr) => {
   return deadline;
 };
 
-const SaraminCard = ({ job }) => {
-  const position = job.position;
+// TODO: 리팩토링 필요
+const parseSaraminData = (data) => {
+  const { url, position, company } = data;
 
-  const url = job.url;
-  const title = position.title;
-  const company = job.company.name;
-
-  const location = position.location.name;
-  const experienceLevel = position["experience-level"].name;
   const educationLevel = position["required-education-level"].name.replace(
     "이상",
     "↑"
   );
+  const deadline = dateToDeadline(data["expiration-date"]);
 
-  const deadline = dateToDeadline(job["expiration-date"]);
+  return {
+    url,
+    title: position.title,
+    companyName: company.name,
+    location: position.location.name,
+    experienceLevel: position["experience-level"].name,
+    educationLevel,
+    deadline
+  };
+};
 
-  // TODO: 데이터를 여기서 가공하는 게 아니라 가공한 데이터를 넘기는 게 맞는 것 같다.
+const SaraminCard = ({ data }) => {
+  // TODO: 데이터 가공 부분은 api 가져오는 파일로 이동시키기
+  const {
+    url,
+    title,
+    companyName,
+    location,
+    experienceLevel,
+    educationLevel,
+    deadline
+  } = parseSaraminData(data);
+
   return (
     <CardContainer onClick={() => window.open(url)}>
       <Icon.Saramin block />
@@ -72,7 +89,7 @@ const SaraminCard = ({ job }) => {
         {title}
       </Text>
       <Text size="large" color="#475067">
-        {company}
+        {companyName}
       </Text>
       <InfoContainer>
         <Icon.Default name="map-pin" size={14} color="#909CB0" />
