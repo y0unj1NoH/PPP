@@ -7,6 +7,7 @@ import RoundCheck from "./RoundCheck";
 import Plus from "./Plus";
 import Check from "./Check";
 import Warning from "./Warning";
+import Saramin from "./Saramin";
 import Github from "./Github";
 
 const IconWrapper = styled.i`
@@ -54,6 +55,7 @@ const Icon = {
   RoundCheck,
   Check,
   Warning,
+  Saramin,
   Github
 };
 

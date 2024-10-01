@@ -1,10 +1,18 @@
+[fullCalendar Docs]
+https://fullcalendar.io/docs#toc
+
 [props 볼 때]
 https://velog.io/@vlck1111/React-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90%EC%84%9C-FullCalendar%EC%9D%98-Props-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0
+https://velog.io/@youjunho613/FullCalendar-library
 
 [모달창 만들 때]
 https://velog.io/@hwakyoung/React-fullcalendar-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+https://leego.tistory.com/entry/React-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%AA%A8%EB%8B%AC-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0
 
-### 
+[날찌 객체 다룰 때]
+https://ko.javascript.info/date#ref-44
+
+###
 
 - 일단 대충 기본 예제 코드는 보았고, 전체적인 스타일링부터 해보려 한다.
 - 캘린터 헤더 툴바 스타일 지정은 기본 기능을 쓰려니, 안되어서 예진님처럼 직접 컴포넌트를 파서 api를 연결해야 할 것 같다.

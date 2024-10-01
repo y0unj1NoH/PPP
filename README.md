@@ -16,7 +16,6 @@ npm create vite@latest
 npm i '@emotion/styled'
 npm i fullcalendar
 npx storybook@latest init
-
 npm i feather-icons
 
 npm i @fullcalendar/daygrid @fullcalendar/interaction @fullcalendar/react @fullcalendar/timegrid @fullcalendar/core
@@ -156,5 +155,9 @@ TODO: 일정 추가, 수정 모달 컨텐츠 컴포넌트 구현(작은 달력: 
 
 11. 새로운 뉴스 파기...^^
 
-TODO: 이렇게 하나하나 기록하는 것 말고, 계획표를 짜놔야겠다.
+- 날짜 앞에 0 넣는거 삼항 연산자로 했는데, padStart 메서드를 사용해서 개선했다. 굿~
+
+블로그 카드 스토리북 만들다가 에러 발생
+[Error] Cannot convert a Symbol value to a string
+Tag 컴포넌트 문제였다.
 

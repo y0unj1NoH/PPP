@@ -6,18 +6,22 @@ const dateToStr = (event) => {
     ? `${event.end.getMonth() + 1}월 ${event.end.getDate()}일`
     : "";
 
-  const convertZero = (num) => (num === 0 ? "00" : num < 10 ? `0${num}` : num);
   const allDay = event.allDay;
 
   if (!allDay) {
-    startDate += ` ${convertZero(event.start.getHours())}:${convertZero(
-      event.start.getMinutes()
-    )}`;
+    startDate += ` ${event.start
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${event.start
+      .getMinutes()
+      .toString()
+      .padStart(2, "0")}`;
 
     endDate += endDate
-      ? ` ${convertZero(event.end.getHours())}:${convertZero(
-          event.end.getMinutes()
-        )}`
+      ? ` ${event.end.getHours().toString().padStart(2, "0")}:${event.end
+          .getMinutes()
+          .toString()
+          .padStart(2, "0")}`
       : "";
   }
 
