@@ -21,7 +21,7 @@ const SliderContainer = styled.div`
   // 너비를 안주면 왜 오른쪽으로 쭉 늘어나는지 모르겠음
   width: 100%;
 
-  border: 1px solid red;
+  // border: 1px solid red;
 
   & .swiper {
     position: static;
@@ -52,6 +52,7 @@ const SliderContainer = styled.div`
 `;
 
 const LabelSlider = ({ children, label, slidesPerView = 3 }) => {
+  const perView = slidesPerView;
   return (
     <SliderContainer>
       <Text size="large" strong color="#252525">
@@ -61,12 +62,24 @@ const LabelSlider = ({ children, label, slidesPerView = 3 }) => {
         slidesPerView={1}
         spaceBetween={10}
         breakpoints={{
-          1200: {
-            slidesPerView: slidesPerView,
+          1910: {
+            slidesPerView: perView + 1,
             spaceBetween: 30
           },
+
+          // 내 마음대로 고쳤는데 괜찮나..?
+          // 기존 view: 1200
+          1500: {
+            slidesPerView: perView,
+            spaceBetween: 30
+          },
+          // 블로그 포스팅 크기 조절로 임의로 삽입
+          1100: {
+            slidesPerView: perView - 1,
+            spaceBetween: perView === 4 ? 20 : 30
+          },
           768: {
-            slidesPerView: slidesPerView - 1,
+            slidesPerView: 2,
             spaceBetween: 20
           },
           360: {

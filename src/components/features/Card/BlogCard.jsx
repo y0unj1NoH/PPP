@@ -9,7 +9,8 @@ const CardContainer = styled.div`
   align-items: flex-start;
   gap: 12px;
 
-  width: 300px;
+  // width: 300px;
+  width: 100%;
   padding: 12px;
 
   border-radius: 9px;
@@ -21,6 +22,8 @@ const ContentContainer = styled.div`
   flex-direction: column;
   gap: 15px;
 
+  width: 100%;
+
   padding: 6px;
 `;
 
@@ -28,11 +31,16 @@ const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  width: 100%;
 `;
 
 const TagContainer = styled.div`
   display: flex;
+  justify-content: flex-start;
   gap: 6px;
+
+  width: 100%;
 `;
 
 const FooterContainer = styled.div`
@@ -62,7 +70,7 @@ const dateToStr = (published_date) => {
 const parseBlogData = (data) => {
   const image = data.cover_image.replace(
     "width=1000,height=420",
-    "width=300,height=180"
+    `width=${1000},height="auto"`
   );
   const date = dateToStr(data.published_timestamp);
 
@@ -83,7 +91,7 @@ const BlogCard = ({ data }) => {
   const { url, image, tags, title, user, date } = parseBlogData(data);
 
   const imageStyle = {
-    width: "100%",
+    maxWidth: "100%",
     borderRadius: "22px"
   };
 
@@ -98,7 +106,6 @@ const BlogCard = ({ data }) => {
         lazy
         src={image}
         block
-        height={180}
         alt={title}
         mode="cover"
         style={{ ...imageStyle }}
@@ -106,7 +113,7 @@ const BlogCard = ({ data }) => {
       <ContentContainer>
         <TitleContainer>
           <TagContainer>
-            {tags.map((tag, index) => (
+            {tags.slice(0, 3).map((tag, index) => (
               <Tag key={index} tag={tag} />
             ))}
           </TagContainer>

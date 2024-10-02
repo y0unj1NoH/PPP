@@ -14,8 +14,8 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
   background-color: ${({ backgroundColor }) => backgroundColor};
 `;
 

@@ -15,8 +15,8 @@ const News = () => {
   return (
     <SliderContainer>
       <Slider.SaraminSlider />
-      {/* <Slider.BlogSlider />
-      <Slider.GithubSlider /> */}
+      <Slider.BlogSlider />
+      {/* <Slider.GithubSlider /> */}
     </SliderContainer>
   );
 };

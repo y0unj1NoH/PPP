@@ -19,6 +19,7 @@ const Text = ({
     fontWeight: strong ? "bold" : undefined,
     fontSize: typeof size === "number" ? size : textSize[size],
     color: color
+    // overflowWrap: "break-word"
   };
 
   return (
