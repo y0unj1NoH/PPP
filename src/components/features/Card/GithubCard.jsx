@@ -5,24 +5,25 @@ import Text from "../../common/Text";
 
 const CardContainer = styled.div`
   display: inline-flex;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
 
-  max-width: 280px;
+  width: 100%;
 
   padding: 12px;
 
   background-color: #0e2234;
   border-radius: 10px;
+
+  cursor: pointer;
 `;
 
 const ImageBackground = styled.div`
   position: relative;
 
-  width: 130px;
-  height: 130px;
-
-  // 모바일 150px, 데스크탑 130px
+  width: 50%;
+  padding-top: 50%;
 
   background-color: #000;
 
@@ -34,7 +35,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   gap: 16px;
 
-  width: 130px;
+  width: 50%;
   text-align: center;
 `;
 
@@ -58,7 +59,8 @@ const GithubCard = ({ data }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    zIndex: 1
+    zIndex: 1,
+    width: "90%"
   };
 
   const profileStyle = {
@@ -66,7 +68,6 @@ const GithubCard = ({ data }) => {
     right: "5%",
     bottom: "5%",
     zIndex: 10,
-    // transform: "translate(-50%, -50%)",
     borderRadius: "50%",
     // TODO: 이미지가 검은 색일 수도 있어서 보더 스타일 정해야 할듯
     border: "1px solid #fff"
@@ -86,7 +87,7 @@ const GithubCard = ({ data }) => {
     <CardContainer onClick={() => window.open(url)}>
       <ImageBackground>
         <div style={{ ...githubImageStyle }}>
-          <Icon.Github size={120} color="#fff" />
+          <Icon.Github size="100%" color="#fff" />
         </div>
         <Image
           lazy

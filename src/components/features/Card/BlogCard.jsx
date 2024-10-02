@@ -9,12 +9,13 @@ const CardContainer = styled.div`
   align-items: flex-start;
   gap: 12px;
 
-  // width: 300px;
   width: 100%;
   padding: 12px;
 
   border-radius: 9px;
   border: 1px solid #e8e8ea;
+
+  cursor: pointer;
 `;
 
 const ContentContainer = styled.div`
@@ -38,7 +39,7 @@ const TitleContainer = styled.div`
 const TagContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  gap: 6px;
+  gap: 4px;
 
   width: 100%;
 `;
@@ -47,13 +48,13 @@ const FooterContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
 `;
 
 const AuthorContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
 `;
 
 // TODO: date 처리 함수들 정리 필요

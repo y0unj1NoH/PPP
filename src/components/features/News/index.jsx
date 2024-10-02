@@ -6,7 +6,7 @@ const SliderContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 32px;
 
   width: 100%;
 `;
@@ -16,7 +16,7 @@ const News = () => {
     <SliderContainer>
       <Slider.SaraminSlider />
       <Slider.BlogSlider />
-      {/* <Slider.GithubSlider /> */}
+      <Slider.GithubSlider />
     </SliderContainer>
   );
 };

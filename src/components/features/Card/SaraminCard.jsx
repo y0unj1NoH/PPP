@@ -14,6 +14,8 @@ const CardContainer = styled.div`
   & * {
     line-height: 20px;
   }
+
+  cursor: pointer;
 `;
 
 const InfoContainer = styled.div`

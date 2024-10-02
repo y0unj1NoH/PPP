@@ -2,7 +2,7 @@ const Github = ({ size = 60, color = "#2C2A4A" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
-    height={size}
+    height={typeof size === "string" ? "auto" : size}
     viewBox="0 0 60 59"
     fill="none"
   >
