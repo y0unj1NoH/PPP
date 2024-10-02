@@ -180,6 +180,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
 
   & > button {
     border-radius: 8px;
@@ -201,5 +202,22 @@
   font-size: 12px;
   opacity: 0.5;
   color: #252525;
+}
+
+.fc-toolbar-title {
+  text-align: center;
+
+  & > .fc-toolbar-title-month {
+    font-weight: 700;
+    color: #907ad6;
+  }
+
+  & > .fc-toolbar-title-year {
+    font-weight: 300;
+  }
+}
+
+.fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+  margin-left: 0;
 }
 

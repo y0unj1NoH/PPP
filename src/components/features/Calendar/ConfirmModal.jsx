@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
   gap: 16px;
 `;
 
-const ConfirmModal = ({ setVisible, event, setModalType }) => {
+const ConfirmModal = ({ setVisible, event, setModalContent }) => {
   // TODO: 함수 최적화
   const onDelete = () => {
     event && event.remove();
@@ -28,7 +28,7 @@ const ConfirmModal = ({ setVisible, event, setModalType }) => {
   };
 
   const onCancel = () => {
-    setModalType({ type: "info", width: 300 });
+    setModalContent({ type: "info", width: 300 });
   };
 
   return (

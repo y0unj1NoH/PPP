@@ -24,7 +24,7 @@ const ButtonContainer = styled.div`
   gap: 4px;
 `;
 
-const InfoModal = ({ setVisible, event, setModalType }) => {
+const InfoModal = ({ setVisible, event, setModalContent }) => {
   const buttonStyle = {
     border: "none",
     backgroundColor: "transparent"
@@ -39,7 +39,7 @@ const InfoModal = ({ setVisible, event, setModalType }) => {
   };
 
   const onDelete = () => {
-    setModalType({ type: "confirm", width: 400 });
+    setModalContent({ type: "confirm", width: 400 });
   };
 
   return (

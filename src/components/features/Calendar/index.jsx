@@ -15,7 +15,10 @@ const Calendar = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [visible, setVisible] = useState(false);
   const [event, setEvent] = useState({});
-  const [modalType, setModalType] = useState({ type: "info", width: 300 });
+  const [modalContent, setModalContent] = useState({
+    type: "info",
+    width: 300
+  });
 
   // 데이터 추가 함수
   function handleDateSelect(selectInfo) {
@@ -40,7 +43,7 @@ const Calendar = () => {
     // 새로운 이벤트 모달이 열리면 기존 모달 info 초기화
     const event = clickInfo.event;
     setEvent(event);
-    setModalType({ type: "info", width: 300 });
+    setModalContent({ type: "info", width: 300 });
     setVisible(true);
   }
 
@@ -51,14 +54,39 @@ const Calendar = () => {
   }
 
   // // 이건
-  // const handleViewDidMount = (arg) => {
-  //   console.log("handleViewDidMount called", arg);
-  //   const toolbarTitle = document.querySelector(".fc-toolbar-title");
-  //   if (toolbarTitle) {
-  //     const [month, year] = toolbarTitle.textContent.split(" ");
-  //     toolbarTitle.innerHTML = `<div><span class="fc-toolbar-title-month">${month}</span> <span class="fc-toolbar-title-year">${year}</span></div>`;
-  //   }
-  // };
+  const separateHeaderTitle = (arg) => {
+    console.log("viewClassNames called", arg);
+    const toolbarTitle = document.querySelector(".fc-toolbar-title");
+
+    const title = arg.view.title;
+    const date = title && title.split(" ");
+
+    if (arg.view.type === "dayGridMonth") {
+      toolbarTitle.innerHTML = `<span class="fc-toolbar-title-month">${
+        date[0]
+      }</span> <span class="fc-toolbar-title-year">${
+        date[date.length - 1]
+      }</span> `;
+    }
+
+    if (arg.view.type === "timeGridWeek") {
+      toolbarTitle.innerHTML = `<span class="fc-toolbar-title-month">${
+        date[0] +
+        " " +
+        date[1] +
+        " " +
+        date[2] +
+        " " +
+        date[3] +
+        (date.length > 5 ? " " + date[4] : "")
+      }</span> <span class="fc-toolbar-title-year">${
+        date[date.length - 1]
+      }</span> `;
+    }
+
+    // type : "timeGridWeek", title: "Dec 29, 2024 – Jan 4, 2025"
+    // type : "dayGridMonth", title: "October 2024" or "Sep 29 – Oct 5, 2024"
+  };
 
   return (
     <>
@@ -93,23 +121,24 @@ const Calendar = () => {
           hour12: false
         }}
         dayMaxEventRows={3} // 최대 이벤트 표시 수
+        viewClassNames={separateHeaderTitle}
       />
       <Modal
-        width={modalType.width}
+        width={modalContent.width}
         visible={visible}
         onClose={() => setVisible(false)}
       >
-        {modalType.type === "info" && visible ? (
+        {modalContent.type === "info" && visible ? (
           <InfoModal
             event={event}
             setVisible={setVisible}
-            setModalType={setModalType}
+            setModalType={setModalContent}
           />
-        ) : modalType.type === "confirm" && visible ? (
+        ) : modalContent.type === "confirm" && visible ? (
           <ConfirmModal
             event={event}
             setVisible={setVisible}
-            setModalType={setModalType}
+            setModalType={setModalContent}
           />
         ) : null}
       </Modal>
