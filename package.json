@@ -23,7 +23,8 @@
     "fullcalendar": "^6.1.15",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",

@@ -1,10 +1,7 @@
+import News from "../components/features/News";
+
 const NewsPage = () => {
-  return (
-    <div>
-      <h1>News</h1>
-      <p>Here is the News</p>
-    </div>
-  );
+  return <News />;
 };
 
 export default NewsPage;

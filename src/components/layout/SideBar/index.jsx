@@ -1,9 +1,9 @@
 import { Link as LinkDOM, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import SideBarItem from "./SideBarItem";
-import Header from "../../Layout/Header";
+import Header from "../Header";
 import Divider from "../../common/Divider";
-import Footer from "../../Layout/Footer";
+import Footer from "../Footer";
 
 const SideBarContainer = styled.div`
   display: flex;
@@ -25,7 +25,6 @@ const SideBarContainer = styled.div`
 const Link = styled(LinkDOM)`
   text-decoration: none;
   width: 100%;
-  // border: 1px solid blue;
 `;
 
 const SideBar = ({ headerType = "desktop" }) => {

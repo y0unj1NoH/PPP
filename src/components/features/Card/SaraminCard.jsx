@@ -6,11 +6,8 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-
-  max-width: 500px;
-  padding: 32px;
-
+  gap: 8px;
+  padding: 16px;
   border-radius: 24px;
   border: 1px solid #e8e8ea;
 
@@ -82,20 +79,21 @@ const SaraminCard = ({ data }) => {
     deadline
   } = parseSaraminData(data);
 
+  // TODO: 컨테이너가 너무 많아서 컴포넌트 분리해야 할 듯
   return (
     <CardContainer onClick={() => window.open(url)}>
-      <Icon.Saramin block />
-      <Text size="large" strong color="#292E40">
+      <Icon.Saramin size={120} block />
+      <Text size={16} strong color="#292E40">
         {title}
       </Text>
-      <Text size="large" color="#475067">
+      <Text size="medium" color="#475067">
         {companyName}
       </Text>
       <InfoContainer>
         <Icon.Default name="map-pin" size={14} color="#909CB0" />
-        <Text size="medium">{`${location} | ${experienceLevel} · ${educationLevel}`}</Text>
+        <Text size="small">{`${location} | ${experienceLevel} · ${educationLevel}`}</Text>
       </InfoContainer>
-      <Text size="medium" color="#6D73AA">
+      <Text size="small" color="#6D73AA">
         {deadline}
       </Text>
     </CardContainer>
