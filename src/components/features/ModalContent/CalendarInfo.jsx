@@ -24,7 +24,7 @@ const ButtonContainer = styled.div`
   gap: 4px;
 `;
 
-const InfoModal = ({ setVisible, event, setModalContent }) => {
+const CalendarInfo = ({ setVisible, event, setModalContent }) => {
   const buttonStyle = {
     border: "none",
     backgroundColor: "transparent"
@@ -71,5 +71,4 @@ const InfoModal = ({ setVisible, event, setModalContent }) => {
   );
 };
 
-export default InfoModal;
-
+export default CalendarInfo;

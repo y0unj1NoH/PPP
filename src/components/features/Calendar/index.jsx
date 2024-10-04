@@ -7,9 +7,8 @@ import timeGridPlugin from "@fullcalendar/timegrid"; // 주간 달력, 일간 �
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "./event-utils";
 import "./Calendar.css";
-import InfoModal from "./InfoModal";
-import ConfirmModal from "./ConfirmModal";
 import Modal from "../../common/Modal";
+import ModalContent from "../ModalContent";
 
 const Calendar = () => {
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -130,13 +129,13 @@ const Calendar = () => {
         onClose={() => setVisible(false)}
       >
         {modalContent.type === "info" && visible ? (
-          <InfoModal
+          <ModalContent.CalendarInfo
             event={event}
             setVisible={setVisible}
             setModalType={setModalContent}
           />
         ) : modalContent.type === "confirm" && visible ? (
-          <ConfirmModal
+          <ModalContent.CalendarConfirm
             event={event}
             setVisible={setVisible}
             setModalType={setModalContent}

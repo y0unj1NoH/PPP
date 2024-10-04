@@ -31,7 +31,7 @@ const ButtonContainer = styled.div`
 `;
 
 // const AddModal = ({ setVisible, event, setModalType }) => {
-const AddModal = ({ setVisible, event }) => {
+const CalendarAdd = ({ setVisible, event }) => {
   const [isCheck, setIsCheck] = useState(false);
 
   const buttonStyle = {
@@ -84,5 +84,5 @@ const AddModal = ({ setVisible, event }) => {
   );
 };
 
-export default AddModal;
+export default CalendarAdd;
 

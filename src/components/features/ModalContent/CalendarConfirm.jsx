@@ -20,7 +20,7 @@ const ButtonContainer = styled.div`
   gap: 16px;
 `;
 
-const ConfirmModal = ({ setVisible, event, setModalContent }) => {
+const CalendarConfirm = ({ setVisible, event, setModalContent }) => {
   // TODO: 함수 최적화
   const onDelete = () => {
     event && event.remove();
@@ -47,5 +47,4 @@ const ConfirmModal = ({ setVisible, event, setModalContent }) => {
   );
 };
 
-export default ConfirmModal;
-
+export default CalendarConfirm;
