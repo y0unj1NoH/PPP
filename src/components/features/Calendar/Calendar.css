@@ -33,7 +33,7 @@
   --fc-bg-event-color: #8fdf82;
   --fc-bg-event-opacity: 0.3;
 
-  --fc-highlight-color: rgba(188, 232, 241, 0.3);
+  --fc-highlight-color: #c5b4fb4d;
   --fc-today-bg-color: #c5b4fb4d;
 
   --fc-now-indicator-color: red;
@@ -220,4 +220,3 @@
 .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
   margin-left: 0;
 }
-

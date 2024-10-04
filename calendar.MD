@@ -55,6 +55,12 @@ https://ko.javascript.info/date#ref-44
 
 ## 일정 추가 모달
 
+- 날짜 input을 구현할 때 날짜 유효성은 라이브러리를 사용하였다.
+  npm install date-fns
+
+
+s
+
 ---
 
 ### 모달을 구현하기까지의 과정

@@ -122,6 +122,7 @@ const Calendar = () => {
         }}
         dayMaxEventRows={3} // 최대 이벤트 표시 수
         viewClassNames={separateHeaderTitle}
+        fixedWeekCount={false}
       />
       <Modal
         width={modalContent.width}
@@ -148,4 +149,3 @@ const Calendar = () => {
 export default Calendar;
 
 // TODO: 커스텀 뷰 나중에 다시 보고 테스트 해보기
-

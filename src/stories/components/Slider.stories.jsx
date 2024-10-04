@@ -7,18 +7,18 @@ export default {
 
 import Card from "../../components/features/Card";
 
-export const Default = () => {
-  return (
-    <Slider>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-    </Slider>
-  );
-};
+// export const Default = () => {
+//   return (
+//     <Slider>
+//       <div>1</div>
+//       <div>2</div>
+//       <div>3</div>
+//       <div>4</div>
+//       <div>5</div>
+//       <div>6</div>
+//     </Slider>
+//   );
+// };
 
 export const Saramin = () => {
   const data = {
@@ -41,7 +41,7 @@ export const Saramin = () => {
     "expiration-date": "2019-06-29T23:59:59+0900"
   };
   return (
-    <Slider>
+    <Slider.SaraminSlider>
       <Card.SaraminCard data={data} />
       <Card.SaraminCard data={data} />
       <Card.SaraminCard data={data} />
@@ -51,7 +51,7 @@ export const Saramin = () => {
       <Card.SaraminCard data={data} />
       <Card.SaraminCard data={data} />
       <Card.SaraminCard data={data} />
-    </Slider>
+    </Slider.SaraminSlider>
   );
 };
 
@@ -75,7 +75,7 @@ export const Blog = () => {
 
   console.log(data);
   return (
-    <Slider slidesPerView={4}>
+    <Slider.BlogSlider slidesPerView={4}>
       <Card.BlogCard data={data} />
       <Card.BlogCard data={data} />
       <Card.BlogCard data={data} />
@@ -85,7 +85,7 @@ export const Blog = () => {
       <Card.BlogCard data={data} />
       <Card.BlogCard data={data} />
       <Card.BlogCard data={data} />
-    </Slider>
+    </Slider.BlogSlider>
   );
 };
 
@@ -103,7 +103,7 @@ export const Github = () => {
   };
 
   return (
-    <Slider slidesPerView={4}>
+    <Slider.GithubSlider slidesPerView={4}>
       <Card.GithubCard data={data} />
       <Card.GithubCard data={data} />
       <Card.GithubCard data={data} />
@@ -113,7 +113,6 @@ export const Github = () => {
       <Card.GithubCard data={data} />
       <Card.GithubCard data={data} />
       <Card.GithubCard data={data} />
-    </Slider>
+    </Slider.GithubSlider>
   );
 };
-

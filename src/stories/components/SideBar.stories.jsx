@@ -1,5 +1,5 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import SideBar from "../../components/features/SideBar";
+import SideBar from "../../components/layout/SideBar";
 
 export default {
   title: "Features/SideBar",
@@ -21,4 +21,3 @@ export const Mobile = () => {
     </Router>
   );
 };
-
