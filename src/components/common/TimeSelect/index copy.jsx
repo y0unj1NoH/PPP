@@ -2,10 +2,7 @@ import Select from "react-select";
 import styled from "@emotion/styled";
 import createOptions from "../../../utils/createOptions";
 import colorStyles from "./colorStyles";
-import { useState, useEffect, useRef } from "react";
-import { useRecoilState } from "recoil";
-
-import { timeRangeAtom } from "../../../recoil/timeRangeAtom";
+import { useState, useEffect } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,56 +36,43 @@ const SelectContainer = styled.div`
 // TODO: select 높이 줄이기, 여백이 많아 보임
 // const DEFAULT_TIME = { hour: "00", minute: "00" };
 
-const labeType = {
-  start: "시작 시간",
-  end: "종료 시간"
-};
+const createDefaultValue = (value) => ({
+  hour: { label: value.hour, value: value.hour },
+  minute: { label: value.minute, value: value.minute }
+});
 
-const TimeSelect = ({ type, label, ...props }) => {
-  const [timeRange, setTimeRange] = useRecoilState(timeRangeAtom);
+const TimeSelect = ({ label, defaultValue, onChange, ...props }) => {
+  // console.log("Select", defaultValue);
+  const [time, setTime] = useState(defaultValue);
 
-  console.log(timeRange);
+  const defaultTime = createDefaultValue(defaultValue);
+
+  useEffect(() => {
+    onChange && onChange(time);
+  }, [time, onChange]);
 
   return (
     <Wrapper>
-      <Label>{labeType[type] || label}</Label>
+      <Label>{label}</Label>
       <SelectContainer>
         <Select
-          value={{
-            label: timeRange[type].hour,
-            value: timeRange[type].hour
-          }}
+          defaultValue={defaultTime.hour}
           isSearchable={true}
           styles={colorStyles}
           name="hour"
           options={createOptions(24)}
           onChange={(selected) => {
-            const newTimeRange = {
-              hour: selected.value,
-              minute: timeRange[type].minute
-            };
-
-            setTimeRange({ ...timeRange, [type]: { ...newTimeRange } });
+            setTime({ ...time, hour: selected.value });
           }}
         />
         <Select
-          value={{
-            label: timeRange[type].minute,
-            value: timeRange[type].minute
-          }}
+          defaultValue={defaultTime.minute}
           isSearchable={true}
           styles={colorStyles}
           name="minute"
           options={createOptions(12, 5)}
           onChange={(selected) => {
-            const newTimeRange = {
-              hour: timeRange[type].hour,
-              minute: selected.value
-            };
-
-            console.log({ ...timeRange, [type]: { ...newTimeRange } });
-
-            setTimeRange({ ...timeRange, [type]: { ...newTimeRange } });
+            setTime({ ...time, minute: selected.value });
           }}
         />
       </SelectContainer>

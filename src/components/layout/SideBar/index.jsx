@@ -12,6 +12,7 @@ const SideBarContainer = styled.div`
   gap: 24px;
 
   width: 300px;
+  top: 0;
   height: 100vh;
   padding: 32px 16px;
 

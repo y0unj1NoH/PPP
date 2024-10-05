@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import useCheckBox from "../../../hooks/useCheckBox";
+import useCheckBox from "../../../hooks/useCheckBox.js";
 import Icon from "../Icon";
 import Text from "../Text";
 
@@ -7,14 +7,14 @@ const CheckBoxContainer = styled.label`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 4px;
   cursor: pointer;
 `;
 
 const Check = styled.div`
   display: inline-flex;
-  width: 19px;
-  height: 19px;
+  width: 14px;
+  height: 14px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;

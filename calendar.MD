@@ -18,7 +18,9 @@ https://leego.tistory.com/entry/React-%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9C%BC%EB%A1
 
 https://ko.javascript.info/date#ref-44
 
----
+### React Select Docs
+
+https://react-select.com/home#custom-styles
 
 ## 캘린더 스타일 수정
 
@@ -64,9 +66,95 @@ https://ko.javascript.info/date#ref-44
 - 셀렉트는 포커스 했을 때 보더 색깔이 안바껴서 고생했는데, 보니까 박스섀도우에 색깔이 있었다...
   안되면 다음부터는 바로바로 css에서 찾자. 컬러스타일을 다른 파일로 뺐는데, 이런거는 각 폴더마다 파일 이름을 통일시키는 게 좋을 듯하다.
 
-s
+// TODO: 달력 아이콘 색깔 언제 어떤 색으로 변경할지
+// TODO: 달력 왜 안 옮겨지고 시작일 위에만 있지..? => ref로 안하고 쿼리 셀렉터로 받으면 맨처음 클래스명이 같은 컨포넌트만 나오기 때문임
 
----
+코드를 너무 거렁뱅이로 짜서 답이 없다
+
+DateInput => YYMMDD 사용
+달력에서 가져오는 값 -> Date()
+calendarApi add 에서 쓰는 값 => YYYYMMDD
+DatePicker에서 설정해주는 값 => Date()
+
+캘린더 Event => 하루면 end 없음(근데 하루 안에 시간이 바뀌면..?)
+데이트피커에서 가져오는 값 selectInfo=> 하루여도 end 나옴
+내가 end를 추가할 때 시간 없이 같은 날을 입력하면 나중에 자동으로 end는 null로 반영됨
+
+1. Date()(초기데이터) => YYYYMMDD(이벤트 데이터 추가용)
+2. Date()(초기데이터) => YYMMDD(input 보여주기용)
+3. YYMMDD() -> YYYYMMDD (이벤트 데이터 추가용)
+
+결국 YYMMDD로 처리하니까 Date()로 받아온 값을 YYMMDD로 바꿔서 보여주고
+YYMMDD로 받아온 값을 YYYYMMDD로 바꿔서 이벤트 데이터 추가할 때만 사용
+
+## 몇번 프롭스로 들어가면 전역으로 뺼까? 2번 부터..?
+
+[Error]component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component.
+초기값을 null을 쓰면 안된다.
+
+```js
+export const dateRangeAtom = atom({
+  key: "dateRangeAtom",
+  default: {
+    start: "", // 이것도 안돼서 그냥 "00:00" 줬음
+    end: ""
+  }
+});
+```
+
+[Error]
+Uncaught Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+무한 루프 도는거 상태 업데이트하면 recoil이랑 useState가 무한루프 도는 것으로 보인다.
+데이트 피커를 선택하면 selectedDate가 바껴 그럼 useEffect가 실행되겠지? 그럼 setDateRange를 통해 dateRange가 바껴 그러면 useEffect가 실행되지? 그러면 이미 저장된 값을 다시 넣어서 만드는 건데 이게 객체니까 내용이 같아도 새로운 것을 추가했다고 받아들여서 계속 dateRange가 갱신되니까 무한 루프에 빠지는 거야?
+=> 네, 맞습니다. selectedDate가 변경되면 useEffect가 실행되고, setDateRange를 통해 dateRange가 업데이트됩니다. 이때 dateRange가 객체이기 때문에, 내용이 같더라도 새로운 객체로 인식되어 useEffect가 다시 실행됩니다. 이렇게 되면 무한 루프에 빠질 수 있습니다.
+
+이를 방지하기 위해, useEffect 내부에서 상태를 업데이트하기 전에 실제로 변경된 내용이 있는지 확인해야 합니다. 객체의 내용을 비교하여 변경 사항이 있을 때만 상태를 업데이트하면 무한 루프를 방지할 수 있습니다.
+
+```jsx
+useEffect(() => {
+  if (selectedDate) {
+    if (selectedDate.start === selectedDate.end) {
+      setDateRange({ ...dateRange, [type]: selectedDate.start });
+    } else {
+      setDateRange({ ...selectedDate });
+    }
+  }
+}, [selectedDate, type, dateRange, setDateRange]);
+```
+
+```jsx
+useEffect(() => {
+  if (selectedDate) {
+    const newDateRange =
+      selectedDate.start === selectedDate.end
+        ? { ...dateRange, [type]: selectedDate.start }
+        : { ...selectedDate };
+
+    // Only update state if there is an actual change
+    if (JSON.stringify(newDateRange) !== JSON.stringify(dateRange)) {
+      setDateRange(newDateRange);
+    }
+  }
+}, [selectedDate, type, dateRange, setDateRange]);
+```
+
+[Error]The pseudo class ":first-child" is potentially unsafe when doing server-side rendering. Try changing it to ":first-of-type".
+[Error]TypeError: Cannot read properties of null (reading 'style')
+
+돌아가는 데는 문제없다. 근데 이거 캘린더 css를 이모션으로 끌고오면서 문제가 생겼는데 고쳐야함
+
+시간설정하면 값이 안나와서 보니까
+start 2024-10-28TT03:00:00
+T 중복 오타..^^
+
+[Error] Uncaught ReferenceError: Cannot access 'defaultTime' before initialization
+const defaultTime = createDefaultValue(defaultValue) || DEFAULT_TIME;
+const [time, setTime] = useState(defaultTime);
+초기화 문제
+
+[Error]console.js:288 Warning: A component is changing an uncontrolled input to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info:
+
+[Error] TypeError: Cannot read properties of undefined (reading 'view')
 
 ### 모달을 구현하기까지의 과정
 

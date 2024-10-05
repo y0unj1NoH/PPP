@@ -1,6 +1,6 @@
-import CalendarAdd from "./CalendarAdd";
-import CalendarInfo from "./CalendarInfo";
-import CalendarConfirm from "./CalendarConfirm";
+import CalendarAdd from "../Calendar/CalendarAdd/CalendarAdd";
+import CalendarInfo from "../Calendar/CalendarInfo/CalendarInfo";
+import CalendarConfirm from "../Calendar/CalendarConfirm/CalendarConfirm";
 
 const ModalContent = {
   CalendarAdd,
@@ -9,3 +9,4 @@ const ModalContent = {
 };
 
 export default ModalContent;
+

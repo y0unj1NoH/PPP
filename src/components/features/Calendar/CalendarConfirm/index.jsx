@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import Text from "../../common/Text";
-import Button from "../../common/Button";
-import Icon from "../../common/Icon";
+import Text from "../../../common/Text";
+import Button from "../../../common/Button";
+import Icon from "../../../common/Icon";
 
 const ContentContainer = styled.div`
   display: flex;

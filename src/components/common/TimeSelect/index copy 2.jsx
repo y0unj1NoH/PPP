@@ -44,51 +44,70 @@ const labeType = {
   end: "종료 시간"
 };
 
+const defaultAtom = {
+  start: { hour: "99", minute: "99" },
+  end: { hour: "99", minute: "99" }
+};
+
 const TimeSelect = ({ type, label, ...props }) => {
   const [timeRange, setTimeRange] = useRecoilState(timeRangeAtom);
+  const isInitialMount = useRef(true);
 
-  console.log(timeRange);
+  const [time, setTime] = useState(defaultAtom[type]);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      if (JSON.stringify(timeRange[type]) !== JSON.stringify(defaultAtom)) {
+        isInitialMount.current = false;
+        setTime(timeRange[type]);
+      }
+    }
+  }, [timeRange, type]);
+
+  useEffect(() => {
+    console.log({ ...timeRange });
+    const newTimeRange = {
+      ...timeRange,
+      [type]: { ...time }
+    };
+
+    if (JSON.stringify(newTimeRange) !== JSON.stringify(timeRange)) {
+      setTimeRange(newTimeRange);
+    }
+  }, [type, time, timeRange, setTimeRange]);
+
+  const defaultHour = {
+    label: time.hour,
+    value: time.hour
+  };
+
+  const defaultMinute = {
+    label: time.minute,
+    value: time.minute
+  };
 
   return (
     <Wrapper>
       <Label>{labeType[type] || label}</Label>
       <SelectContainer>
         <Select
-          value={{
-            label: timeRange[type].hour,
-            value: timeRange[type].hour
-          }}
+          defaultValue={defaultHour}
           isSearchable={true}
           styles={colorStyles}
           name="hour"
           options={createOptions(24)}
           onChange={(selected) => {
-            const newTimeRange = {
-              hour: selected.value,
-              minute: timeRange[type].minute
-            };
-
-            setTimeRange({ ...timeRange, [type]: { ...newTimeRange } });
+            setTime({ ...time, hour: selected.value });
           }}
         />
         <Select
-          value={{
-            label: timeRange[type].minute,
-            value: timeRange[type].minute
-          }}
+          defaultValue={defaultMinute}
           isSearchable={true}
           styles={colorStyles}
           name="minute"
           options={createOptions(12, 5)}
           onChange={(selected) => {
-            const newTimeRange = {
-              hour: timeRange[type].hour,
-              minute: selected.value
-            };
-
-            console.log({ ...timeRange, [type]: { ...newTimeRange } });
-
-            setTimeRange({ ...timeRange, [type]: { ...newTimeRange } });
+            setTime({ ...time, minute: selected.value });
           }}
         />
       </SelectContainer>

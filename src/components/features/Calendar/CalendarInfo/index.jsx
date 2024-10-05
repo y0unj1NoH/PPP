@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import Text from "../../common/Text";
-import Button from "../../common/Button";
-import Icon from "../../common/Icon";
-import dateToStr from "../../../utils/dateToStr";
+import Text from "../../../common/Text";
+import Button from "../../../common/Button";
+import Icon from "../../../common/Icon";
+import dateToStr from "../../../../utils/dateToStr";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const CalendarInfo = ({ setVisible, event, setModalContent }) => {
   const date = dateToStr(event);
 
   const onEdit = () => {
-    console.log("Edit");
+    setModalContent({ type: "edit", width: 500 });
   };
 
   const onDelete = () => {
