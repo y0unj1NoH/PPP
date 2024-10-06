@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { useRecoilState } from "recoil";
-
 import styled from "@emotion/styled";
-
 import Input from "../Input";
 import Icon from "../Icon";
 import DatePicker from "../DatePicker";
-
-import validateYYMMDD from "../../../utils/validateYYMMDD";
-import useDatePicker from "../../../hooks/useDatePicker";
-import { dateRangeAtom } from "../../../recoil/dateRangeAtom";
-
+import useDateInput from "../../../hooks/useDateInput";
 const InputContainer = styled.div`
   position: relative;
   width: 100%;
@@ -59,52 +51,16 @@ const placeholderType = {
 };
 
 const DateInput = ({ type, label = "", ...props }) => {
-  const [dateRange, setDateRange] = useRecoilState(dateRangeAtom);
-
-  const [invalid, setInvalid] = useState(false);
-  const [
+  const {
+    dateRange,
+    invalid,
     showDatePicker,
+    datePickerAnchorRef,
+    handleInputChange,
+    handleIconClick,
     setShowDatePicker,
-    selectedDate,
-    setSelectedDate,
-    datePickerAnchorRef
-  ] = useDatePicker();
-
-  useEffect(() => {
-    if (selectedDate) {
-      const newDateRange =
-        selectedDate.start === selectedDate.end
-          ? { ...dateRange, [type]: selectedDate.start }
-          : { ...selectedDate };
-
-      // Only update state if there is an actual change
-      if (JSON.stringify(newDateRange) !== JSON.stringify(dateRange)) {
-        setDateRange(newDateRange);
-      }
-    }
-  }, [selectedDate, type, dateRange, setDateRange]);
-
-  const handleInputChange = (e) => {
-    const { value } = e.target;
-
-    if (value.length > 8) {
-      return;
-    }
-
-    const formattedValue = value
-      .replace(/\D/g, "")
-      .replace(/^(\d{0,2})(\d{0,2})(\d{0,2})$/, "$1.$2.$3")
-      .replace(/(\.{1,2})$/g, "");
-
-    e.target.value = formattedValue;
-
-    setInvalid(value.length === 8 && !validateYYMMDD(value));
-    setDateRange({ ...dateRange, [type]: formattedValue });
-  };
-
-  const handleIconClick = () => {
-    setShowDatePicker(!showDatePicker);
-  };
+    setSelectedDate
+  } = useDateInput(type);
 
   // TODO: css도 정리하기 일단 기능 코드만 정리함
   const datePickerStyle = {
