@@ -1,19 +1,21 @@
 import "./myreset.css";
 import "./App.css";
 
-import { useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import styled from "@emotion/styled";
 import Sidebar from "./components/layout/SideBar";
 import CalendarPage from "./pages/CalendarPage";
 import TodoListPage from "./pages/TodoListPage";
 import NewsPage from "./pages/NewsPage";
-import styled from "@emotion/styled";
 
 const Main = styled.div`
-  /* border: 1px solid purple; */
   width: 100%;
   max-width: calc(100vw - 300px);
+  // 부모 따라서 연계해서 같이 주어야 적용됨
+  height: 100vh;
   padding: 16px 32px;
+
+  overflow: auto;
 `;
 
 export default function App() {

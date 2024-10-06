@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
 import styled from "@emotion/styled";
 import Text from "../../common/Text";
 import Icon from "../../common/Icon";
@@ -6,10 +8,13 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  justify-content: space-between;
+  // gap: 8px;
   padding: 16px;
   border-radius: 24px;
   border: 1px solid #e8e8ea;
+
+  height: 180px;
 
   & * {
     line-height: 20px;
@@ -36,33 +41,28 @@ const DaysOfWeek = Object.freeze({
 });
 
 // TODO: date 처리 함수들 정리 필요
-const dateToDeadline = (dateStr) => {
-  const dateObj = new Date(dateStr);
-
-  const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
-  const date = dateObj.getDate().toString().padStart(2, "0");
-  const day = `${DaysOfWeek[dateObj.getDay()]}`;
-
-  const deadline = `~${month}.${date}(${day})`;
-
-  return deadline;
+const timestampToDeadline = (timestamp) => {
+  const dateObj = new Date(parseInt(timestamp, 10));
+  const formattedDate = format(dateObj, "MM.dd(EEE)", { locale: ko });
+  return `~${formattedDate}`;
 };
 
 // TODO: 리팩토링 필요
 const parseSaraminData = (data) => {
   const { url, position, company } = data;
 
+  const location = position.location.name.split(",")[0].replace("&gt;", ">");
   const educationLevel = position["required-education-level"].name.replace(
     "이상",
     "↑"
   );
-  const deadline = dateToDeadline(data["expiration-date"]);
+  const deadline = timestampToDeadline(data["expiration-timestamp"]);
 
   return {
     url,
     title: position.title,
     companyName: company.name,
-    location: position.location.name,
+    location,
     experienceLevel: position["experience-level"].name,
     educationLevel,
     deadline

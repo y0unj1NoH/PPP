@@ -262,6 +262,21 @@ swiper에 relative가 기본적으로 설정되어 있어서 문제가 발생하
 
   데이터와 UI 코드를 어떻게 분리하였는지?
 
+  [api]
+
+  [Error] Failed to load resource: the server responded with a status of 403 ()
+  access-key 잘못 기재
+  [Error] https://oapi.saramin.co.kr/job-search?access-key=QenRz7UA7RfV8MPdNjBkudN5BLSfhluIFXZvEBenQVbI2hs2GG&job_cd=92&job_mid_cd=2&keywords=%EC%8B%A0%EC%9E%85&count=9' from origin 'http://localhost:5173' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+[Error]"API rate limit exceeded for 211.215.143.14. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"
+프록시 서버 넣었다
+[Error] Uncaught ReferenceError: process is not defined
+.env 넣으면서 난 문제, 바이트는 이렇게 해야한다
+https://velog.io/@aseungbo/0929-Uncaught-ReferenceError-process-is-not-defined-error-muw77bbz
+바이트는 환경이 달라서 바이트에 맞게 적용해야 한다! 그래서 에러뜬 것!
+
+블로그 이미지 처리 어떻게 했는지 궁금하다다
+
 ---
 
 ## 이미 푸시된 커밋 메시지 수정하기

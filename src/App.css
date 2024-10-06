@@ -8,22 +8,12 @@ html {
   font-size: 62.5%;
 }
 
-/* 데모 앱 css */
-html,
-body,
-body > div {
-  /* the react root */
-  margin: 0;
-  padding: 0;
-}
-
 .App {
   display: flex;
   min-height: 100%;
   align-items: center;
 
   width: 100%;
-  /* overflow: auto; */
 }
 
 :root {
@@ -66,4 +56,3 @@ body > div {
 
   --fc-now-indicator-color: red;
 }
-

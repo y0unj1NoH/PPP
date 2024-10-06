@@ -11,7 +11,6 @@ const SideBarItemContainer = styled.div`
   // width: 100%;
   padding: 16px;
 
-  // border: 1px solid red;
   border: none;
   border-radius: 8px;
   color: #202020;
@@ -39,7 +38,7 @@ const SideBarItem = ({ name, index, active, onClick, ...props }) => {
   return (
     <SideBarItemContainer active={active} onClick={onClick} {...props}>
       {icon[name]}
-      <Text size={2} strong={active}>
+      <Text size={1.8} strong={active}>
         {text[name]}
       </Text>
     </SideBarItemContainer>
@@ -47,4 +46,3 @@ const SideBarItem = ({ name, index, active, onClick, ...props }) => {
 };
 
 export default SideBarItem;
-

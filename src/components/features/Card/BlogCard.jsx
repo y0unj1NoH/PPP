@@ -10,6 +10,7 @@ const CardContainer = styled.div`
   gap: 12px;
 
   width: 100%;
+  height: 350px;
   padding: 12px;
 
   border-radius: 9px;
@@ -34,6 +35,15 @@ const TitleContainer = styled.div`
   gap: 15px;
 
   width: 100%;
+
+  .blog-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+
+    min-height: 4rem;
+  }
 `;
 
 const TagContainer = styled.div`
@@ -69,20 +79,16 @@ const dateToStr = (published_date) => {
 };
 
 const parseBlogData = (data) => {
-  const image = data.cover_image.replace(
-    "width=1000,height=420",
-    `width=${1000},height="auto"`
-  );
   const date = dateToStr(data.published_timestamp);
 
   return {
     url: data.url,
-    image,
+    image: data.cover_image,
     tags: data.tag_list,
     title: data.title,
     user: {
       profile: data.user.profile_image_90,
-      name: data.user.name
+      name: data.user.name.split(",")[0]
     },
     date
   };
@@ -96,6 +102,11 @@ const BlogCard = ({ data }) => {
     borderRadius: "22px"
   };
 
+  const nameStyle = {
+    fontSize: user.name.length > 10 ? "1.6rem" : "1.8rem", // 10자 이상이면 글씨 크기 줄임
+    color: "#97989F"
+  };
+
   const profileStyle = {
     borderRadius: "50%"
   };
@@ -107,6 +118,8 @@ const BlogCard = ({ data }) => {
         lazy
         src={image}
         block
+        width="100%"
+        height="100%"
         alt={title}
         mode="cover"
         style={{ ...imageStyle }}
@@ -114,11 +127,14 @@ const BlogCard = ({ data }) => {
       <ContentContainer>
         <TitleContainer>
           <TagContainer>
-            {tags.slice(0, 3).map((tag, index) => (
-              <Tag key={index} tag={tag} />
-            ))}
+            {tags
+              .filter((tag) => tag.length <= 10)
+              .slice(0, 3)
+              .map((tag, index) => (
+                <Tag key={index} tag={tag} />
+              ))}
           </TagContainer>
-          <Text size={2} strong color="#181A2A">
+          <Text className="blog-title" block size={2} strong color="#181A2A">
             {title}
           </Text>
         </TitleContainer>
@@ -133,7 +149,7 @@ const BlogCard = ({ data }) => {
               mode="cover"
               style={{ ...profileStyle }}
             />
-            <Text size="large" color="#97989F">
+            <Text size="large" color="#97989F" style={{ ...nameStyle }}>
               {user.name}
             </Text>
           </AuthorContainer>

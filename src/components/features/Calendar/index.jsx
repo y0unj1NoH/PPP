@@ -13,7 +13,7 @@ import useCalendar from "../../../hooks/useCalendar";
 const FullCalendarWrapper = styled.div`
   &.fullCalendar {
     .fc {
-      height: 90vh;
+      height: 95vh;
       margin: 20px;
       /* max-width: 1100px; */
       width: 100%;

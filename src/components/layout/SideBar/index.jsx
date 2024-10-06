@@ -20,6 +20,8 @@ const SideBarContainer = styled.div`
 
   line-height: 1.5;
   border-right: 1px solid #d3e2e8;
+
+  box-sizing: border-box;
 `;
 
 const Link = styled(LinkDOM)`
