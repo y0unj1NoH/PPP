@@ -103,6 +103,7 @@ const useCalendarForm = ({
       if (isCheck) {
         start = `${start}${formatTimeToHHMMSS(timeRange.start)}`;
         end = `${end}${formatTimeToHHMMSS(timeRange.end)}`;
+        console.log("isCheck", isCheck, start, end);
       }
 
       if (start !== end && !isCheck) {
@@ -113,8 +114,10 @@ const useCalendarForm = ({
 
       if (isEditMode) {
         event.setProp("title", title);
+        console.log("allDay", !isCheck);
         event.setAllDay(!isCheck);
         event.setDates(start, end);
+        console.log("end", event.end);
       } else {
         const calendarApi = selectInfo.view.calendar;
         calendarApi.unselect();
@@ -126,7 +129,7 @@ const useCalendarForm = ({
         });
       }
     },
-    [selectInfo, dateRange, isCheck, timeRange, title]
+    [title, dateRange, timeRange, isCheck, isEditMode, selectInfo, event]
   );
 
   const handleSubmit = useCallback(
