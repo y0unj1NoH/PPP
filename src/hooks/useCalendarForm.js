@@ -8,6 +8,7 @@ import formatDateRangeToYYYYMMDD from "../utils/formatDateRangeToYYYYMMDD";
 import { format, addDays, parse, isAfter } from "date-fns";
 import { v4 } from "uuid";
 import validateYYMMDD from "../utils/validateYYMMDD";
+import Toast from "../components/common/Toast";
 
 const addOneDay = yyyymmdd => {
   const date = new Date(yyyymmdd);
@@ -139,9 +140,15 @@ const useCalendarForm = ({
       const newErrors = validate();
       if (Object.keys(newErrors).length === 0) {
         await onSubmit();
-        isEditMode
-          ? setModalContent({ type: "info", width: 300 })
-          : setVisible(false);
+        if (isEditMode) {
+          {
+            setModalContent({ type: "info", width: 300 });
+            Toast.show(true, "일정이 수정되었어요"), 3000;
+          }
+        } else {
+          setVisible(false);
+          Toast.show(true, "일정이 등록되었어요"), 3000;
+        }
       }
       setErrors(newErrors);
       setIsLoading(false);

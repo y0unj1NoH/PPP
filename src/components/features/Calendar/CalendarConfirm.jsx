@@ -1,7 +1,9 @@
+import { useCallback } from "react";
 import styled from "@emotion/styled";
-import Text from "../../../common/Text";
-import Button from "../../../common/Button";
-import Icon from "../../../common/Icon";
+import Text from "../../common/Text";
+import Button from "../../common/Button";
+import Icon from "../../common/Icon";
+import Toast from "../../common/Toast";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -21,15 +23,15 @@ const ButtonContainer = styled.div`
 `;
 
 const CalendarConfirm = ({ setVisible, event, setModalContent }) => {
-  // TODO: 함수 최적화
-  const onDelete = () => {
+  const onDelete = useCallback(() => {
     event && event.remove();
     setVisible(false);
-  };
+    Toast.show(true, "일정이 삭제되었어요"), 3000;
+  }, [event, setVisible]);
 
-  const onCancel = () => {
+  const onCancel = useCallback(() => {
     setModalContent({ type: "info", width: 300 });
-  };
+  }, [setModalContent]);
 
   return (
     <ContentContainer>

@@ -1,11 +1,11 @@
 import Select from "react-select";
 import styled from "@emotion/styled";
-import createOptions from "../../../utils/createOptions";
-import colorStyles from "./colorStyles";
+import createOptions from "../utils/createOptions";
+import colorStyles from "../components/common/TimeSelect/colorStyles";
 import { useState, useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 
-import { timeRangeAtom } from "../../../recoil/timeRangeAtom";
+import { timeRangeAtom } from "../recoil/timeRangeAtom";
 
 const Wrapper = styled.div`
   display: flex;

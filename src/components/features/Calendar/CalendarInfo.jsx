@@ -1,8 +1,9 @@
+import { useCallback } from "react";
 import styled from "@emotion/styled";
-import Text from "../../../common/Text";
-import Button from "../../../common/Button";
-import Icon from "../../../common/Icon";
-import dateToStr from "../../../../utils/dateToStr";
+import Text from "../../common/Text";
+import Button from "../../common/Button";
+import Icon from "../../common/Icon";
+import formatEventDateToString from "../../../utils/formatEventDateToString";
 
 const ContentContainer = styled.div`
   display: flex;
@@ -30,23 +31,25 @@ const CalendarInfo = ({ setVisible, event, setModalContent }) => {
     backgroundColor: "transparent"
   };
 
-  // TODO: 함수 최적화
-  const title = event.title;
-  const date = dateToStr(event);
+  const date = formatEventDateToString(event);
 
-  const onEdit = () => {
+  const onEdit = useCallback(() => {
     setModalContent({ type: "edit", width: 500 });
-  };
+  }, [setModalContent]);
 
-  const onDelete = () => {
+  const onDelete = useCallback(() => {
     setModalContent({ type: "confirm", width: 400 });
-  };
+  }, [setModalContent]);
+
+  const onClose = useCallback(() => {
+    setVisible(false);
+  }, [setVisible]);
 
   return (
     <ContentContainer>
       <InfoHeader>
         <Text size={18} strong>
-          {title}
+          {event.title}
         </Text>
         <ButtonContainer>
           <Button
@@ -60,7 +63,7 @@ const CalendarInfo = ({ setVisible, event, setModalContent }) => {
             style={{ ...buttonStyle }}
           />
           <Button
-            onClick={() => setVisible(false)}
+            onClick={onClose}
             label={<Icon.Default name="x" size={24} color="#79747E" />}
             style={{ ...buttonStyle }}
           />

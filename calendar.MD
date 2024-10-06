@@ -156,6 +156,8 @@ const [time, setTime] = useState(defaultTime);
 
 [Error] TypeError: Cannot read properties of undefined (reading 'view')
 
+시간이 반영이 안되는게 보니까 유즈스테이트랑 리코일이랑 같이 써서 엉켜서 그런 듯. 그래서 다 빼고 리코일로만 사용해서 해결함.
+
 ### 모달을 구현하기까지의 과정
 
 1. 처음에는 calendar 컴포넌트에 모달 세개를 마구 넣고, 각각 setVisible로 관리하려고 했다. 근데 그러니까 너무 지저분하고, 복잡하였다.

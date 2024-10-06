@@ -1,7 +1,7 @@
 import Select from "react-select";
 import styled from "@emotion/styled";
-import createOptions from "../../../utils/createOptions";
-import colorStyles from "./colorStyles";
+import createOptions from "../utils/createOptions";
+import colorStyles from "../components/common/TimeSelect/colorStyles";
 import { useState, useEffect } from "react";
 
 const Wrapper = styled.div`

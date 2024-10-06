@@ -1,14 +1,15 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
+import dayGridPlugin from "@fullcalendar/daygrid"; // 월간 달력
+import timeGridPlugin from "@fullcalendar/timegrid"; // 주간 달력, 일간 달력
 import interactionPlugin from "@fullcalendar/interaction";
-import Modal from "../../common/Modal";
-import CalendarAdd from "./CalendarAdd";
-import CalendarInfo from "./CalendarInfo";
-import CalendarConfirm from "./CalendarConfirm";
-import CalendarEdit from "./CalendarEdit";
-import useCalendar from "../../../hooks/useCalendar";
+import { INITIAL_EVENTS } from "./event-utils";
+import Modal from "../components/common/Modal";
+import CalendarAdd from "../components/features/Calendar/CalendarAdd";
+import CalendarInfo from "../components/features/Calendar/CalendarInfo";
+import CalendarConfirm from "../components/features/Calendar/CalendarConfirm";
+import CalendarEdit from "../components/features/Calendar/CalendarEdit";
 
 const FullCalendarWrapper = styled.div`
   .fc {
@@ -197,44 +198,103 @@ const FullCalendarWrapper = styled.div`
 `;
 
 const Calendar = () => {
-  const {
-    currentEvents,
-    visible,
-    event,
-    selectInfo,
-    modalContent,
-    handleDateSelect,
-    handleEventClick,
-    handleEvents,
-    separateHeaderTitle,
-    setVisible,
-    setModalContent
-  } = useCalendar();
+  const [currentEvents, setCurrentEvents] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [event, setEvent] = useState({});
+  const [selectInfo, setSelectInfo] = useState({});
+  const [modalContent, setModalContent] = useState({
+    type: "info",
+    width: 300
+  });
+
+  // 데이터 추가 함수
+  function handleDateSelect(selectInfo) {
+    console.log("selectInfo", selectInfo);
+    setSelectInfo(selectInfo);
+    setModalContent({ type: "add", width: 500 });
+    setVisible(true);
+  }
+
+  function handleEventClick(clickInfo) {
+    const event = clickInfo.event;
+    console.log("event", event);
+    setEvent(event);
+    setModalContent({ type: "info", width: 300 });
+    setVisible(true);
+  }
+
+  // 이건 뭐지
+  // 이벤트 변경 시 이벤트 데이터 갱신하는 함수
+  function handleEvents(events) {
+    setCurrentEvents(events);
+  }
+
+  const separateHeaderTitle = (arg) => {
+    // console.log("viewClassNames called", arg);
+    const toolbarTitle = document.querySelector(".fc-toolbar-title");
+
+    const title = arg.view.title;
+    const date = title && title.split(" ");
+
+    if (arg.view.type === "dayGridMonth") {
+      toolbarTitle.innerHTML = `<span class="fc-toolbar-title-month">${
+        date[0]
+      }</span> <span class="fc-toolbar-title-year">${
+        date[date.length - 1]
+      }</span> `;
+    }
+
+    if (arg.view.type === "timeGridWeek") {
+      toolbarTitle.innerHTML = `<span class="fc-toolbar-title-month">${
+        date[0] +
+        " " +
+        date[1] +
+        " " +
+        date[2] +
+        " " +
+        date[3] +
+        (date.length > 5 ? " " + date[4] : "")
+      }</span> <span class="fc-toolbar-title-year">${
+        date[date.length - 1]
+      }</span> `;
+    }
+
+    // type : "timeGridWeek", title: "Dec 29, 2024 – Jan 4, 2025"
+    // type : "dayGridMonth", title: "October 2024" or "Sep 29 – Oct 5, 2024"
+  };
 
   return (
     <FullCalendarWrapper>
       <FullCalendar
+        // 사용할 플러그인
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+        // 헤더 바
         headerToolbar={{
           left: "today",
           center: "prev title next",
           right: "dayGridMonth timeGridWeek"
         }}
-        initialView="dayGridMonth"
-        editable={true}
-        selectable={true}
+        // viewDidMount={handleViewDidMount}
+        initialView="dayGridMonth" // 월간 달력으로 디폴트 화면
+        editable={true} // 이벤트를 드래그 앤 드롭으로 편집 가능
+        selectable={true} // 달력 드래그해서 날짜 및 시간 선택 가능
         selectMirror={true}
         dayMaxEvents={true}
-        events={currentEvents}
-        select={handleDateSelect}
-        eventClick={handleEventClick}
-        eventsSet={handleEvents}
+        events={INITIAL_EVENTS} // 캘린더에 표시할 이벤트 데이터
+        select={handleDateSelect} // 날짜 선택했을 때 실행되는 함수(우리는 추가 모달 뜨게 해야함)
+        eventClick={handleEventClick} // 이벤트 클릭 시 함수
+        eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+        /* you can update a remote database when these fire:
+              eventAdd={function(){}}
+              eventChange={function(){}}
+              eventRemove={function(){}}
+              */
         eventTimeFormat={{
           hour: "2-digit",
           minute: "2-digit",
           hour12: false
         }}
-        dayMaxEventRows={3}
+        dayMaxEventRows={3} // 최대 이벤트 표시 수
         viewClassNames={separateHeaderTitle}
         fixedWeekCount={false}
       />
@@ -256,7 +316,11 @@ const Calendar = () => {
             setModalContent={setModalContent}
           />
         ) : modalContent.type === "add" && visible ? (
-          <CalendarAdd selectInfo={selectInfo} setVisible={setVisible} />
+          <CalendarAdd
+            selectInfo={selectInfo}
+            setVisible={setVisible}
+            // setModalContent={setModalContent}
+          />
         ) : modalContent.type === "edit" && visible ? (
           <CalendarEdit
             event={event}
@@ -269,3 +333,5 @@ const Calendar = () => {
   );
 };
 export default Calendar;
+
+// TODO: 커스텀 뷰 나중에 다시 보고 테스트 해보기
