@@ -41,7 +41,6 @@ const TitleContainer = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     -webkit-line-clamp: 2;
-
     min-height: 4rem;
   }
 `;
@@ -67,35 +66,8 @@ const AuthorContainer = styled.div`
   gap: 8px;
 `;
 
-// TODO: date 처리 함수들 정리 필요
-const dateToStr = (published_date) => {
-  const dateObj = new Date(published_date);
-
-  const date = `${dateObj.toLocaleString("en-US", { month: "short" })} ${dateObj
-    .getDate()
-    .toString()
-    .padStart(2, "0")}, ${dateObj.getFullYear()}`;
-  return date;
-};
-
-const parseBlogData = (data) => {
-  const date = dateToStr(data.published_timestamp);
-
-  return {
-    url: data.url,
-    image: data.cover_image,
-    tags: data.tag_list,
-    title: data.title,
-    user: {
-      profile: data.user.profile_image_90,
-      name: data.user.name.split(",")[0]
-    },
-    date
-  };
-};
-
 const BlogCard = ({ data }) => {
-  const { url, image, tags, title, user, date } = parseBlogData(data);
+  const { url, image, tags, title, user, date } = data;
 
   const imageStyle = {
     maxWidth: "100%",

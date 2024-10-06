@@ -1,5 +1,3 @@
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
 import styled from "@emotion/styled";
 import Text from "../../common/Text";
 import Icon from "../../common/Icon";
@@ -40,35 +38,6 @@ const DaysOfWeek = Object.freeze({
   6: "토"
 });
 
-// TODO: date 처리 함수들 정리 필요
-const timestampToDeadline = (timestamp) => {
-  const dateObj = new Date(parseInt(timestamp, 10));
-  const formattedDate = format(dateObj, "MM.dd(EEE)", { locale: ko });
-  return `~${formattedDate}`;
-};
-
-// TODO: 리팩토링 필요
-const parseSaraminData = (data) => {
-  const { url, position, company } = data;
-
-  const location = position.location.name.split(",")[0].replace("&gt;", ">");
-  const educationLevel = position["required-education-level"].name.replace(
-    "이상",
-    "↑"
-  );
-  const deadline = timestampToDeadline(data["expiration-timestamp"]);
-
-  return {
-    url,
-    title: position.title,
-    companyName: company.name,
-    location,
-    experienceLevel: position["experience-level"].name,
-    educationLevel,
-    deadline
-  };
-};
-
 const SaraminCard = ({ data }) => {
   // TODO: 데이터 가공 부분은 api 가져오는 파일로 이동시키기
   const {
@@ -79,7 +48,7 @@ const SaraminCard = ({ data }) => {
     experienceLevel,
     educationLevel,
     deadline
-  } = parseSaraminData(data);
+  } = data;
 
   // TODO: 컨테이너가 너무 많아서 컴포넌트 분리해야 할 듯
   return (

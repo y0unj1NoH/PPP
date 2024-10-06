@@ -39,20 +39,8 @@ const TextContainer = styled.div`
   text-align: center;
 `;
 
-const parseGithubData = (data) => {
-  return {
-    url: data.html_url,
-    title: data.name,
-    description: data.description,
-    owner: {
-      profile: data.owner.avatar_url,
-      name: data.owner.login
-    }
-  };
-};
-
 const GithubCard = ({ data }) => {
-  const { url, title, description, owner } = parseGithubData(data);
+  const { url, title, description, owner } = data;
 
   const githubImageStyle = {
     position: "absolute",
@@ -74,13 +62,12 @@ const GithubCard = ({ data }) => {
   };
 
   const descriptionStyle = {
-    fontSize: "12px",
+    fontSize: "1.2rem",
     color: "#fff",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
     display: "-webkit-box",
-    WebkitLineClamp: 2,
-    WebkitBoxOrient: "vertical"
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    WebkitLineClamp: 2
   };
 
   return (

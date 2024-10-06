@@ -275,7 +275,26 @@ swiper에 relative가 기본적으로 설정되어 있어서 문제가 발생하
 https://velog.io/@aseungbo/0929-Uncaught-ReferenceError-process-is-not-defined-error-muw77bbz
 바이트는 환경이 달라서 바이트에 맞게 적용해야 한다! 그래서 에러뜬 것!
 
-블로그 이미지 처리 어떻게 했는지 궁금하다다
+블로그 이미지 처리 어떻게 했는지 궁금하다
+
+[Error] error: failed to push some refs to
+커밋에 토큰 정보있어서 안되는 거였다.
+const apiGithub = axios.create({
+baseURL: "https://api.github.com/search/repositories",
+headers: {
+Accept: "application/vnd.github+json"
+// Authorization: `token ${import.meta.env.VITE_APP_GITHUB_TOKEN}`
+}
+});
+git stash
+git reset --soft HEAD~1
+git rm --cached .env
+
+이름짓기 너무 어렵다.......
+유틸함수 이름 개구려.........
+
+코드 분리 어떻게 해야하냐...............
+이름도 구리고 코드 분리도 개구리다
 
 ---
 

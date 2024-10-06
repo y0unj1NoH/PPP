@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { fetchJobListings } from "../services/apiSaramin";
 import { fetchArticles } from "../services/apiBlog";
 import { fetchGithubProjects } from "../services/apiGithub";
+import {
+  parseJobListings,
+  parseArticles,
+  parseGithubProjects
+} from "../utils/parseData";
 
 const useNewsData = () => {
   const [data, setData] = useState({ jobs: [], articles: [], projects: [] });
@@ -16,11 +21,16 @@ const useNewsData = () => {
           fetchArticles(),
           fetchGithubProjects()
         ]);
-        setData({ jobs, articles, projects });
 
-        console.log("jobs", jobs);
-        console.log("articles", articles);
-        console.log("projects", projects);
+        const parsedJobs = parseJobListings(jobs);
+        const parsedArticles = parseArticles(articles);
+        const parsedProjects = parseGithubProjects(projects);
+
+        setData({
+          jobs: parsedJobs,
+          articles: parsedArticles,
+          projects: parsedProjects
+        });
       } catch (error) {
         setError(error);
       } finally {
