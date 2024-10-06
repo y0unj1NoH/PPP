@@ -6,7 +6,7 @@ const SliderContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 
   width: 100%;
 `;
@@ -22,4 +22,3 @@ const News = () => {
 };
 
 export default News;
-

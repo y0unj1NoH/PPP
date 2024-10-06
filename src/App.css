@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+/* html {
+  font-size: 62.5%;
+} */
+
 /* 데모 앱 css */
 html,
 body,
@@ -13,10 +17,10 @@ body > div {
   padding: 0;
 }
 
-h2 {
+/* h2 {
   margin: 0;
   font-size: 16px;
-}
+} */
 
 ul {
   margin: 0;

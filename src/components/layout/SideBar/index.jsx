@@ -8,11 +8,10 @@ import Footer from "../Footer";
 const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
 
   width: 300px;
-  top: 0;
   height: 100vh;
   padding: 32px 16px;
 
@@ -66,4 +65,3 @@ const SideBar = ({ headerType = "desktop" }) => {
 };
 
 export default SideBar;
-

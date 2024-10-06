@@ -95,7 +95,7 @@ const SaraminCard = ({ data }) => {
         <Icon.Default name="map-pin" size={14} color="#909CB0" />
         <Text size="small">{`${location} | ${experienceLevel} · ${educationLevel}`}</Text>
       </InfoContainer>
-      <Text size="small" color="#6D73AA">
+      <Text size="small" color="#6D73AA" style={{ whiteSpace: "nowrap" }}>
         {deadline}
       </Text>
     </CardContainer>
@@ -103,4 +103,3 @@ const SaraminCard = ({ data }) => {
 };
 
 export default SaraminCard;
-
