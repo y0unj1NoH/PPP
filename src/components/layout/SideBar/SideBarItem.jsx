@@ -39,7 +39,9 @@ const SideBarItem = ({ name, index, active, onClick, ...props }) => {
   return (
     <SideBarItemContainer active={active} onClick={onClick} {...props}>
       {icon[name]}
-      <Text strong={active}>{text[name]}</Text>
+      <Text size={2} strong={active}>
+        {text[name]}
+      </Text>
     </SideBarItemContainer>
   );
 };

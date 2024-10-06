@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: 36px;
 
   // width: 100% 하니까 오버플로우 됐는데 보니까 부모값이 fix라서 그런 것이었다.
   width: calc(100% - 32px);

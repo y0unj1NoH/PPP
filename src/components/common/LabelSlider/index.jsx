@@ -55,7 +55,7 @@ const LabelSlider = ({ children, label, slidesPerView = 3 }) => {
   const perView = slidesPerView;
   return (
     <SliderContainer>
-      <Text size="large" strong color="#252525">
+      <Text size={2.4} strong color="#252525">
         {label}
       </Text>
       <Swiper
@@ -106,4 +106,3 @@ const LabelSlider = ({ children, label, slidesPerView = 3 }) => {
 };
 
 export default LabelSlider;
-

@@ -113,4 +113,3 @@ const GithubCard = ({ data }) => {
 };
 
 export default GithubCard;
-

@@ -72,7 +72,7 @@ const ToastItem = ({ success, message, duration, onDone }) => {
       ) : (
         <Icon.Warning />
       )}
-      <Text>{message}</Text>
+      <Text size="large">{message}</Text>
     </Container>
   );
 };

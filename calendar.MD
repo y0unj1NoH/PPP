@@ -41,6 +41,8 @@ https://react-select.com/home#custom-styles
   }
   ```
 
+  emotion으로 css를 국한시키면 그 컴포넌트만 적용되는 줄알았는데, 전역으로 되어서, 데이트피커만의 className을 넣어주었다.
+
 ---
 
 ## 캘린더 모달 구현

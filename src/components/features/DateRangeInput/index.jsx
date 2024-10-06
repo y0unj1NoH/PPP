@@ -8,8 +8,6 @@ const DateComponentContainer = styled.div`
 
   gap: 16px;
   width: 100%;
-
-  // border: 1px solid #c5c5c5;
 `;
 
 const DateRangeInput = () => {

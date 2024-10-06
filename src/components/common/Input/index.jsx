@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 
 const Label = styled.label`
   display: block;
-  font-size: 12px;
+  font-size: 1.2rem;
 `;
 
 const defaultColors = {

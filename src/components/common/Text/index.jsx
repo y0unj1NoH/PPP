@@ -1,7 +1,7 @@
 const textSize = {
-  small: 12,
-  normal: 14,
-  large: 18
+  small: 1.2,
+  medium: 1.4,
+  large: 1.8
 };
 
 const Text = ({
@@ -17,7 +17,7 @@ const Text = ({
 
   const fontStyle = {
     fontWeight: strong ? "bold" : undefined,
-    fontSize: typeof size === "number" ? size : textSize[size],
+    fontSize: typeof size === "number" ? `${size}rem` : `${textSize[size]}rem`,
     color: color
     // overflowWrap: "break-word"
   };

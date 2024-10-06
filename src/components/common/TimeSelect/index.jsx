@@ -18,7 +18,7 @@ const Label = styled.label`
   display: block;
   width: 100%;
 
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #7e7e7e;
 `;
 

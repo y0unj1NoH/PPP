@@ -27,7 +27,7 @@ const StyledIcon = styled.div`
 
 const Label = styled.label`
   display: block;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #7e7e7e;
 `;
 

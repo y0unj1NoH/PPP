@@ -22,7 +22,8 @@ const Wrapper = styled.div`
 const Tag = ({ tag }) => {
   return (
     <Wrapper backgroundColor={colorStyle[tag] || colorStyle.default}>
-      <Text size={12} color="white">
+      {/* TODO: Text 컴포넌트 props.style 쓰면 기존 params 적용안되는 버그 확인 */}
+      <Text size={1.5} color="white">
         {tag}
       </Text>
     </Wrapper>
@@ -30,4 +31,3 @@ const Tag = ({ tag }) => {
 };
 
 export default Tag;
-

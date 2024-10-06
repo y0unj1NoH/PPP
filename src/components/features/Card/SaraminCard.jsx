@@ -85,17 +85,17 @@ const SaraminCard = ({ data }) => {
   return (
     <CardContainer onClick={() => window.open(url)}>
       <Icon.Saramin size={120} block />
-      <Text size={16} strong color="#292E40">
+      <Text size="large" strong color="#292E40">
         {title}
       </Text>
-      <Text size="medium" color="#475067">
+      <Text size={1.6} color="#475067">
         {companyName}
       </Text>
       <InfoContainer>
         <Icon.Default name="map-pin" size={14} color="#909CB0" />
-        <Text size="small">{`${location} | ${experienceLevel} · ${educationLevel}`}</Text>
+        <Text size="medium">{`${location} | ${experienceLevel} · ${educationLevel}`}</Text>
       </InfoContainer>
-      <Text size="small" color="#6D73AA" style={{ whiteSpace: "nowrap" }}>
+      <Text size="medium" color="#6D73AA">
         {deadline}
       </Text>
     </CardContainer>

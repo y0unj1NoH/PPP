@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useRecoilState } from "recoil";
 
-import TimeSelect from "../../common/TimeSelect";
-import useTimeSelect from "../../../hooks/useTimeSelect";
-import { timeRangeAtom } from "../../../recoil/timeRangeAtom";
+import TimeSelect from "../components/common/TimeSelect";
+import useTimeSelect from "../hooks/useTimeSelect";
+import { timeRangeAtom } from "../recoil/timeRangeAtom";
 
 const DateComponentContainer = styled.div`
   display: flex;

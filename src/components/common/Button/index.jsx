@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import Text from "../Text";
 
 const buttonSize = {
-  small: { padding: 4, fontSize: 12 },
-  medium: { padding: 8, fontSize: 14 },
-  large: { padding: 16, fontSize: 16 }
+  small: { padding: 4, fontSize: 1.2 },
+  medium: { padding: 8, fontSize: 1.4 },
+  large: { padding: 16, fontSize: 1.6 }
 };
 
 // TODO: 더 좋은 변수 이름 찾기
@@ -12,7 +12,6 @@ const $Button = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  line-height: 1;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -36,7 +35,7 @@ const Button = ({
   ...props
 }) => {
   const buttonStyle = {
-    fontSize: buttonSize[size].fontSize,
+    fontSize: `${buttonSize[size].fontSize}rem`,
     padding: buttonSize[size].padding,
     backgroundColor: primary ? "#907ad6" : "white",
     color: primary ? "white" : "#181a2a",

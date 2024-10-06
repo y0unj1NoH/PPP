@@ -4,9 +4,9 @@
   box-sizing: border-box;
 }
 
-/* html {
+html {
   font-size: 62.5%;
-} */
+}
 
 /* 데모 앱 css */
 html,
@@ -17,30 +17,9 @@ body > div {
   padding: 0;
 }
 
-/* h2 {
-  margin: 0;
-  font-size: 16px;
-} */
-
-ul {
-  margin: 0;
-  padding: 0 0 0 1.5em;
-}
-
-li {
-  margin: 1.5em 0;
-  padding: 0;
-}
-
-b {
-  /* used for event dates/times */
-  margin-right: 3px;
-}
-
 .App {
   display: flex;
   min-height: 100%;
-  font-size: 14px;
   align-items: center;
 
   width: 100%;

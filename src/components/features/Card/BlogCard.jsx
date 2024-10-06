@@ -118,7 +118,7 @@ const BlogCard = ({ data }) => {
               <Tag key={index} tag={tag} />
             ))}
           </TagContainer>
-          <Text size="large" strong color="#181A2A">
+          <Text size={2} strong color="#181A2A">
             {title}
           </Text>
         </TitleContainer>
@@ -133,11 +133,11 @@ const BlogCard = ({ data }) => {
               mode="cover"
               style={{ ...profileStyle }}
             />
-            <Text size="small" color="#97989F">
+            <Text size="large" color="#97989F">
               {user.name}
             </Text>
           </AuthorContainer>
-          <Text size="small" color="#97989F">
+          <Text size={1.6} color="#97989F">
             {date}
           </Text>
         </FooterContainer>
@@ -147,4 +147,3 @@ const BlogCard = ({ data }) => {
 };
 
 export default BlogCard;
-
