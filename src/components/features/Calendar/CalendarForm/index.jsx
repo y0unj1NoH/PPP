@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import CalendarFormHeader from "./CalendarFormHeader";
 import CalendarFormTitleInput from "./CalendarFormTitleInput";
 import CalendarFormDateTimeSection from "./CalendarFormDateTimeSection";
-import CalendarFormButtons from "./CalendarFormButtons";
+import FormButtons from "../../FormButtons";
 import ErrorText from "../../Error/ErrorText";
 
 const FormContainer = styled.div`
@@ -35,7 +35,7 @@ const CalendarForm = ({
         setIsCheck={setIsCheck}
         setTimeRange={setTimeRange}
       />
-      <CalendarFormButtons
+      <FormButtons
         setVisible={setVisible}
         handleSubmit={handleSubmit}
         disabled={isLoading}

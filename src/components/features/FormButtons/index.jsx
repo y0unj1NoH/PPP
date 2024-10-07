@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import Button from "../../../common/Button";
+import Button from "../../common/Button";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const ButtonContainer = styled.div`
   gap: 15px;
 `;
 
-const CalendarFormButtons = ({ setVisible, handleSubmit, disabled }) => (
+const FormButtons = ({ setVisible, handleSubmit, disabled }) => (
   <ButtonContainer>
     <Button
       size="medium"
@@ -26,5 +26,5 @@ const CalendarFormButtons = ({ setVisible, handleSubmit, disabled }) => (
   </ButtonContainer>
 );
 
-export default CalendarFormButtons;
+export default FormButtons;
 

@@ -9,6 +9,7 @@ import Check from "./Check";
 import Warning from "./Warning";
 import Saramin from "./Saramin";
 import Github from "./Github";
+import Clock from "./Clock";
 
 const IconWrapper = styled.i`
   display: inline-flex;
@@ -51,6 +52,7 @@ const Icon = {
   Default,
   CheckList,
   Telescope,
+  Clock,
   Plus,
   RoundCheck,
   Check,

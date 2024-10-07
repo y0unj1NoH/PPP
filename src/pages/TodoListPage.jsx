@@ -1,10 +1,8 @@
+import TodoList from "../components/features/TodoList";
+
 const TodoListPage = () => {
-  return (
-    <div>
-      <h1>TodoList</h1>
-      <p>Here is the TodoList</p>
-    </div>
-  );
+  return <TodoList />;
 };
 
 export default TodoListPage;
+

@@ -11,6 +11,8 @@ import CalendarEdit from "./CalendarEdit";
 import useCalendar from "../../../hooks/useCalendar";
 
 const FullCalendarWrapper = styled.div`
+  padding: 16px 32px;
+
   &.fullCalendar {
     .fc {
       height: 95vh;
@@ -198,6 +200,7 @@ const FullCalendarWrapper = styled.div`
     }
   }
 `;
+
 const Calendar = () => {
   const {
     currentEvents,

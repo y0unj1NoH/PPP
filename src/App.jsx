@@ -1,6 +1,5 @@
 import "./myreset.css";
 import "./App.css";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "@emotion/styled";
 import Sidebar from "./components/layout/SideBar";
@@ -13,7 +12,7 @@ const Main = styled.div`
   max-width: calc(100vw - 300px);
   // 부모 따라서 연계해서 같이 주어야 적용됨
   height: 100vh;
-  padding: 16px 32px;
+  // padding: 16px 32px;
 
   overflow: auto;
 `;

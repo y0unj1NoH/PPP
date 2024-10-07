@@ -6,7 +6,7 @@ import {
   parseJobListings,
   parseArticles,
   parseGithubProjects
-} from "../utils/parseData";
+} from "../utils/parseNewsData";
 
 const useNewsData = () => {
   const [data, setData] = useState({ jobs: [], articles: [], projects: [] });

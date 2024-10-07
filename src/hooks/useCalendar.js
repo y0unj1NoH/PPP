@@ -11,7 +11,6 @@ const useCalendar = () => {
   });
 
   function handleDateSelect(selectInfo) {
-    console.log("selectInfo", selectInfo);
     setSelectInfo(selectInfo);
     setModalContent({ type: "add", width: 500 });
     setVisible(true);
@@ -19,7 +18,6 @@ const useCalendar = () => {
 
   function handleEventClick(clickInfo) {
     const event = clickInfo.event;
-    console.log("event", event);
     setEvent(event);
     setModalContent({ type: "info", width: 300 });
     setVisible(true);

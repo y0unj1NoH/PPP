@@ -4,6 +4,22 @@ import Input from "../Input";
 import Icon from "../Icon";
 import DatePicker from "../DatePicker";
 import useDateInput from "../../../hooks/useDateInput";
+
+const DateInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  width: 100%;
+`;
+
+const Label = styled.label`
+  display: block;
+  font-size: 1.4rem;
+  color: #7e7e7e;
+`;
+
 const InputContainer = styled.div`
   position: relative;
   width: 100%;
@@ -23,21 +39,6 @@ const StyledIcon = styled.div`
   &:hover {
     color: #907ad6;
   }
-`;
-
-const Label = styled.label`
-  display: block;
-  font-size: 1.4rem;
-  color: #7e7e7e;
-`;
-
-const DateInputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 8px;
-
-  width: 100%;
 `;
 
 const labelType = {
@@ -106,4 +107,3 @@ const DateInput = ({ type, label = "", ...props }) => {
 };
 
 export default DateInput;
-

@@ -17,8 +17,16 @@ const $Button = styled.button`
   cursor: pointer;
 
   &#button--plus {
-    padding: 20px 28px;
-    border-radius: 20px;
+    width: 60px;
+    height: 48px;
+    padding: 4px 7px;
+    border-radius: 8px;
+
+    & > * {
+      // border: 1px solid red;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &#button--check {
@@ -57,4 +65,3 @@ const Button = ({
 };
 
 export default Button;
-

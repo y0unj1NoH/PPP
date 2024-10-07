@@ -9,6 +9,8 @@ const SliderContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 26px;
+
+  padding: 16px 32px;
 `;
 
 const SpinnerWrapper = styled.div`
