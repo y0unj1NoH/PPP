@@ -29,6 +29,13 @@ const ContentContainer = styled.div`
   padding: 6px;
 `;
 
+const ImageContainer = styled.div`
+  flex: 1;
+  width: 100%;
+  // padding-bottom: 56.25%; /* 16:9 비율을 유지하기 위한 패딩 */
+  position: relative;
+`;
+
 const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,6 +58,7 @@ const TagContainer = styled.div`
   gap: 4px;
 
   width: 100%;
+  min-height: 23px;
 `;
 
 const FooterContainer = styled.div`
@@ -71,7 +79,10 @@ const BlogCard = ({ data }) => {
 
   const imageStyle = {
     maxWidth: "100%",
-    borderRadius: "22px"
+    borderRadius: "22px",
+    position: "absolute",
+    top: 0,
+    left: 0
   };
 
   const nameStyle = {
@@ -86,16 +97,18 @@ const BlogCard = ({ data }) => {
   // TODO: 지저분한 컨테이너 정리하기
   return (
     <CardContainer onClick={() => window.open(url)}>
-      <Image
-        lazy
-        src={image}
-        block
-        width="100%"
-        height="100%"
-        alt={title}
-        mode="cover"
-        style={{ ...imageStyle }}
-      />
+      <ImageContainer>
+        <Image
+          lazy
+          src={image}
+          block
+          width="100%"
+          height="100%"
+          alt={title}
+          mode="cover"
+          style={{ ...imageStyle }}
+        />
+      </ImageContainer>
       <ContentContainer>
         <TitleContainer>
           <TagContainer>

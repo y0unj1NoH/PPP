@@ -37,7 +37,7 @@ export const parseArticles = articles => {
   return articles.map(article => {
     return {
       url: article.url,
-      image: article.cover_image,
+      image: article.cover_image || "https://i.ibb.co/xj0MQjw/no-image.png",
       tags: article.tag_list,
       title: article.title,
       user: {
