@@ -5,8 +5,17 @@ const JOB_MID_CD = 2;
 const KEYWORDS = ["신입"];
 const PER_PAGE = 9;
 
+// const saramin_proxy =
+//   window.location.hostname === 'localhost' ? '' : '/saramin_proxy';
+
+
 const apiSaramin = axios.create({
-  baseURL: "/saraminApi",
+  // baseURL: `/saraminApi`,
+  // TEST
+  baseURL: `https://oapi.saramin.co.kr/job-search`,
+  headers: {
+    'Access-Control-Allow-Origin': '*' 
+  },
   params: {
     "access-key": import.meta.env.VITE_APP_SARAMIN_ACCESS_KEY,
     job_cd: JOB_CD,
@@ -19,6 +28,7 @@ const apiSaramin = axios.create({
 export const fetchJobListings = async () => {
   try {
     const response = await apiSaramin.get("");
+    console.log(response.data)
     return response.data.jobs.job;
   } catch (error) {
     console.error("Error fetching job listings:", error);
