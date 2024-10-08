@@ -6,7 +6,7 @@ const KEYWORDS = ["신입"];
 const PER_PAGE = 9;
 
 const SARAMIN_PROXY =
-  window.location.hostname === 'localhost' ? '' : '/saramin_proxy';
+  window.location.hostname === 'localhost' ? '/saramin_localProxy' : '/saramin_proxy';
 
 
 const apiSaramin = axios.create({
