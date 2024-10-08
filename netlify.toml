@@ -8,5 +8,4 @@ from = "/saramin_proxy/*"
 from = "/*"
   to = "/index.html"
   status = 200
-  force = true
   
