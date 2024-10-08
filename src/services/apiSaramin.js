@@ -5,14 +5,16 @@ const JOB_MID_CD = 2;
 const KEYWORDS = ["신입"];
 const PER_PAGE = 9;
 
-// const saramin_proxy =
-//   window.location.hostname === 'localhost' ? '' : '/saramin_proxy';
+const SARAMIN_PROXY =
+  window.location.hostname === 'localhost' ? '' : '/saramin_proxy';
 
 
 const apiSaramin = axios.create({
-  // baseURL: `/saraminApi`,
-  // TEST
-  baseURL: `https://oapi.saramin.co.kr/job-search`,
+  // baseURL: `/saramin_api`,
+  // TEST 1 => CORS ERR
+  // baseURL: `https://oapi.saramin.co.kr/job-search`,
+  // TEST 2
+  baseURL: `${SARAMIN_PROXY}/job-search`,
   headers: {
     'Access-Control-Allow-Origin': '*' 
   },
