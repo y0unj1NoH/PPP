@@ -1,22 +1,29 @@
 import styled from "@emotion/styled";
 import TaskItem from "./TaskItem";
 
-const TaskListContainer = styled.div``;
+const TaskListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-const TaskList = ({ tasks }) => {
+  width: 100%;
+`;
+
+const TaskList = ({ tasks, toggleTaskDone }) => {
   return (
     <TaskListContainer>
-      {tasks.map((item, index) => (
+      {tasks.map((item, index) =>
         <TaskItem
           key={index}
-          task={item}
+          task={item.task}
+          deadline={item.deadline}
           //   removeTask={removeTask}
-          //   toggleTaskDone={toggleTaskDone}
+          toggleTaskDone={() => toggleTaskDone(item.id)}
+          done={item.done}
         />
-      ))}
+      )}
     </TaskListContainer>
   );
 };
 
 export default TaskList;
-

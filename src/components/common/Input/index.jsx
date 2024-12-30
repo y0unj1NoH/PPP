@@ -11,16 +11,16 @@ const Label = styled.label`
 
 const defaultColors = {
   true: "red",
-  false: "#C5C5C5"
+  false: "#C5C5C5",
   // false: "#7E7E7E"
 };
 const defaultFontColors = {
   true: "red",
-  false: "#7E7E7E"
+  false: "#7E7E7E",
 };
 const focusColors = {
   true: "red",
-  false: "#907ad6"
+  false: "#907ad6",
 };
 
 const StyledInput = styled.input`
@@ -56,7 +56,9 @@ const Input = ({
 }) => {
   return (
     <Wrapper block={block} {...wrapperProps}>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+      </Label>
       <StyledInput
         invalid={invalid}
         required={required}
@@ -70,4 +72,3 @@ const Input = ({
 };
 
 export default Input;
-

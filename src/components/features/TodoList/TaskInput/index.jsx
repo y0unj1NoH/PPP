@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import Input from "../../../common/Input";
 import Icon from "../../../common/Icon";
 import Button from "../../../common/Button";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useRecoilState } from "recoil";
 import { dateTimeRangeAtom } from "../../../../recoil/dateTimeRangeAtom";
 
@@ -37,13 +37,21 @@ const StyledIcon = styled.div`
   }
 `;
 
-const TaskInput = ({ setVisible, setModalContent, onChange, onAdd }) => {
-  const { dateTimeRange, setDateTimeRange } = useRecoilState(dateTimeRangeAtom);
+const TaskInput = ({ setVisible, setModalContent, onAdd }) => {
+  const [dateTimeRange, setDateTimeRange] = useRecoilState(dateTimeRangeAtom);
+  const [task, setTask] = useState("");
 
-  const handleIconClick = useCallback(() => {
-    setModalContent({ type: "deadline", width: 500 });
-    setVisible(true);
-  });
+  const handleChange = useCallback(e => {
+    setTask(e.target.value);
+  }, []);
+
+  const handleIconClick = useCallback(
+    () => {
+      setModalContent({ type: "deadline", width: 500 });
+      setVisible(true);
+    },
+    [setModalContent, setVisible]
+  );
 
   return (
     <TaskInputContainer>
@@ -52,28 +60,33 @@ const TaskInput = ({ setVisible, setModalContent, onChange, onAdd }) => {
           block
           //   invalid={invalid}
           type="text"
-          onChange={onChange}
+          value={task}
+          onChange={handleChange}
           placeholder="할 일을 입력하세요"
           style={{
             width: "100%",
             padding: "14px 12px",
             borderRadius: "12px",
-            fontSize: "1.6rem"
+            fontSize: "1.6rem",
           }}
         />
         {/* TODO: 타임 태그 추가하기 */}
-        <StyledIcon>
-          <Icon.Clock onClick={handleIconClick} />
+        <StyledIcon onClick={handleIconClick}>
+          <Icon.Clock />
         </StyledIcon>
       </InputContainer>
       <Button
         id="button--plus"
         primary
-        label={<Icon.Plus size={24} color="white" onClick={onAdd} />}
+        label={<Icon.Plus size={24} color="white" />}
+        onClick={() => {
+          console.log(task);
+          onAdd(task);
+          setTask("");
+        }}
       />
     </TaskInputContainer>
   );
 };
 
 export default TaskInput;
-

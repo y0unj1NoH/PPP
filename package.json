@@ -24,6 +24,7 @@
     "feather-icons": "^4.29.2",
     "fullcalendar": "^6.1.15",
     "http-proxy-middleware": "^3.0.2",
+    "nanoid": "^5.0.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",

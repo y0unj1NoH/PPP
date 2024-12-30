@@ -10,6 +10,7 @@ import Warning from "./Warning";
 import Saramin from "./Saramin";
 import Github from "./Github";
 import Clock from "./Clock";
+import Kebab from "./Kebab";
 
 const IconWrapper = styled.i`
   display: inline-flex;
@@ -27,14 +28,14 @@ const Default = ({
   const shapeStyle = {
     width: size,
     height: size,
-    transform: rotate ? `rotate(${rotate}deg)` : undefined
+    transform: rotate ? `rotate(${rotate}deg)` : undefined,
   };
 
   const iconStyle = {
     "stroke-width": strokeWidth,
     stroke: color,
     width: size,
-    height: size
+    height: size,
   };
 
   const icon = icons[name];
@@ -58,8 +59,8 @@ const Icon = {
   Check,
   Warning,
   Saramin,
-  Github
+  Github,
+  Kebab,
 };
 
 export default Icon;
-
